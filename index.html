@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--    Boxicons for sidebar-->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+<!--    Charts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+
+<!--    Leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+
+<!--    Local-->
+    <link rel="stylesheet" type="text/css" href="map.css">
+    <link rel="stylesheet" type="text/css" href="sidebar.css">
+
+    <title>Algeciras</title>
+</head>
+<body>
+
+<div class="sidebar" onmouseenter="toggleSidebar()" onmouseleave="toggleSidebar()">
+    <div class="logo_details">
+        <i class='bx bx-map-alt' id="mapbtn"></i>
+        <span class='logo_name'>Algeciras</span>
+        <i class='bx bx-menu' id="menubtn"></i>
+    </div>
+    <ul class="nav_links">
+        <li>
+            <div class="icon_link1">
+                <a href="#">
+                    <i class='bx bx-buildings' ></i>
+                    <span class="link_name">Territorio y ciudad</span>
+                </a>
+                <i class='bx bx-chevron-down arrowcat' ></i>
+            </div>
+            <ul class="submenu1">
+                <li>
+                    <a href="#" id="ind1">Población</a>
+                </li>
+                <li>
+                    <div class="icon_link2">
+                        <a href="#">
+                            <span class="link_name">Plegable</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrowsub' ></i>
+                    </div>
+
+                    <ul class="submenu2">
+                        <li>
+                            <a class="sub" href="#" id="ind2">Ratio hombres y mujeres</a>
+                        </li>
+                        <li>
+                            <a href="#" id="ind3">Viviendas</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="icon_link1">
+                <a href="#">
+                    <i class='bx bx-bus'></i>
+                    <span class="link_name">Movilidad y transporte</span>
+                </a>
+                <i class='bx bx-chevron-down arrowcat' ></i>
+            </div>
+            <ul class="submenu1">
+                <li>
+                    <a href="#" id="ind4">Viviendas habitaciones</a>
+                </li>
+                <li>
+                    <div class="icon_link2">
+                        <a href="#">
+                            <span class="link_name">Plegable</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrowsub' ></i>
+                    </div>
+
+                    <ul class="submenu2">
+                        <li>
+                            <a class="sub" href="#">Subindicador</a>
+                        </li>
+                        <li>
+                            <a href="#">Subindicador</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="icon_link1">
+                <a href="#">
+                    <i class='bx bx-home-alt-2' ></i>
+                    <span class="link_name">Demografía y vivienda</span>
+                </a>
+                <i class='bx bx-chevron-down arrowcat' ></i>
+            </div>
+            <ul class="submenu1">
+                <li>
+                    <a href="#">Indicador</a>
+                </li>
+                <li>
+                    <div class="icon_link2">
+                        <a href="#">
+                            <span class="link_name">Plegable</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrowsub' ></i>
+                    </div>
+
+                    <ul class="submenu2">
+                        <li>
+                            <a class="sub" href="#">Subindicador</a>
+                        </li>
+                        <li>
+                            <a href="#">Subindicador</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="icon_link1">
+                <a href="#">
+                    <i class='bx bx-credit-card-front' ></i>
+                    <span class="link_name">Cohesión social y económica</span>
+                </a>
+                <i class='bx bx-chevron-down arrowcat' ></i>
+            </div>
+            <ul class="submenu1">
+                <li>
+                    <a href="#">Indicador</a>
+                </li>
+                <li>
+                    <div class="icon_link2">
+                        <a href="#">
+                            <span class="link_name">Plegable</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrowsub' ></i>
+                    </div>
+
+                    <ul class="submenu2">
+                        <li>
+                            <a class="sub" href="#">Subindicador</a>
+                        </li>
+                        <li>
+                            <a href="#">Subindicador</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="icon_link1">
+                <a href="#">
+                    <i class='bx bxs-buildings' ></i>
+                    <span class="link_name">Metabolismo urbano</span>
+                </a>
+                <i class='bx bx-chevron-down arrowcat' ></i>
+            </div>
+            <ul class="submenu1">
+                <li>
+                    <a href="#">Indicador</a>
+                </li>
+                <li>
+                    <div class="icon_link2">
+                        <a href="#">
+                            <span class="link_name">Plegable</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrowsub' ></i>
+                    </div>
+
+                    <ul class="submenu2">
+                        <li>
+                            <a class="sub" href="#">Subindicador</a>
+                        </li>
+                        <li>
+                            <a href="#">Subindicador</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="icon_link1">
+                <a href="#">
+                    <i class='bx bx-leaf' ></i>
+                    <span class="link_name">Medioambiente y cambio climático</span>
+                </a>
+                <i class='bx bx-chevron-down arrowcat' ></i>
+            </div>
+            <ul class="submenu1">
+                <li>
+                    <a href="#">Indicador</a>
+                </li>
+                <li>
+                    <div class="icon_link2">
+                        <a href="#">
+                            <span class="link_name">Plegable</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrowsub' ></i>
+                    </div>
+
+                    <ul class="submenu2">
+                        <li>
+                            <a class="sub" href="#">Subindicador</a>
+                        </li>
+                        <li>
+                            <a href="#">Subindicador</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="icon_link1">
+                <a href="#">
+                    <i class='bx bxs-bank' ></i>
+                    <span class="link_name">Estructura económica</span>
+                </a>
+                <i class='bx bx-chevron-down arrowcat' ></i>
+            </div>
+            <ul class="submenu1">
+                <li>
+                    <a href="#">Indicador</a>
+                </li>
+                <li>
+                    <div class="icon_link2">
+                        <a href="#">
+                            <span class="link_name">Plegable</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrowsub' ></i>
+                    </div>
+
+                    <ul class="submenu2">
+                        <li>
+                            <a class="sub" href="#">Subindicador</a>
+                        </li>
+                        <li>
+                            <a href="#">Subindicador</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="icon_link1">
+                <a href="#">
+                    <i class='bx bx-arch' ></i>
+                    <span class="link_name">Gobernanza</span>
+                </a>
+                <i class='bx bx-chevron-down arrowcat' ></i>
+            </div>
+            <ul class="submenu1">
+                <li>
+                    <a href="#">Indicador</a>
+                </li>
+                <li>
+                    <div class="icon_link2">
+                        <a href="#">
+                            <span class="link_name">Plegable</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrowsub' ></i>
+                    </div>
+
+                    <ul class="submenu2">
+                        <li>
+                            <a class="sub" href="#">Subindicador</a>
+                        </li>
+                        <li>
+                            <a href="#">Subindicador</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script src="resources/algeciras.js"></script>
+    <script src="resources/barrios.js"></script>
+    <script src="resources/mallas.js"></script>
+    <script src="resources/puntos.js"></script>
+    <!--    <script src="plugins/leaflet.control.select.src.js"></script>-->
+    <script src="map.js"></script>
+</body>
+</html>

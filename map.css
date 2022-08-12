@@ -1,0 +1,117 @@
+#map {
+    position: absolute;
+    height: 100vh;
+    width: calc(100% - 92px);
+    left: 92px;
+    /*right: 450px;*/
+    transition: all 0.5s ease;
+    /*filter: blur(3px);*/
+}
+
+/*.sidebar.active ~ #map {*/
+/*    width: calc(100% - 300px);*/
+/*    left: 300px;*/
+/*}*/
+
+.leaflet-left {
+    /*transform: none;*/
+    transition: all 0.5s ease;
+    /*z-index: 400;*/
+}
+
+.leaflet-left.active {
+    transform: translateX(260px);
+}
+
+.leaflet-bottom.leaflet-left.active {
+    /*transform: translateX(170%);*/
+    transform: translateX(260px);
+}
+
+.info {
+    padding: 6px 8px;
+    font: 16px/18px Arial, Helvetica, sans-serif;
+    background: #fafafa;
+    color: #646464;
+    /*background: rgba(255,255,255,0.9);*/
+    /*box-shadow: 0 0 15px rgba(0,0,0,0.2);*/
+    border-radius: 5px;
+}
+
+.charts{
+    bottom: 15px;
+    /*padding: 6px 8px;*/
+    padding-bottom: 18px;
+    font: 16px/18px Arial, Helvetica, sans-serif;
+    background: #fafafa;
+    /*background: rgba(255,255,255,1);*/
+    /*box-shadow: 0 0 15px rgba(0,0,0,0.2);*/
+    border-radius: 5px;
+    width: 400px;
+    height: 30rem;
+    /*height: 500px;*/
+    /*right: 10px;*/
+    transition: all 1s ease;
+    box-shadow: 0 0 15px rgba(0,0,0,0);
+}
+
+.charts.active {
+    width: 1000px;
+    height: 650px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#chartbtn {
+    font: 10px/12px Arial, Helvetica, sans-serif;
+    padding: 3px 6px;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #3d7685;
+    color: #fff;
+    /*transform: translate(335%,-120%);*/
+    transform: translate(300px,-25px);
+    transition: all 1s ease;
+}
+
+#chartbtn:hover {
+    cursor: pointer;
+}
+
+.charts.active #chartbtn{
+    /*transform: translate(1015%,-120%);*/
+    transform: translate(900px,-25px);
+}
+
+
+.info h4 {
+    margin: 0 0 5px;
+    /*color: #777;*/
+    color: #3d7685;
+}
+
+.details_scroller{
+	font: 16px/18px Arial, Helvetica, sans-serif;
+	width: 400px;
+    /*max-height: 380px;*/
+    max-height: 13rem;
+    /*height: 400px;*/
+	/*z-index: 999;*/
+	overflow-y: scroll;
+    /*transform: translateY(15%);*/
+    /*bottom: 10px;*/
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.8;
+}
