@@ -57,7 +57,7 @@ var layer2 = L.layerGroup();
 var baseMaps = {
    "Open Street Maps": osmMap,
    "Google Streets": googleStreets,
-   // "Google Hybrid": googleHybrid,
+   "Google Hybrid": googleHybrid,
    "Light Map": lightMap,
    "Dark Map": darkMap,
    // "Google Satellite": googleSat,
@@ -191,11 +191,54 @@ let dropTables2 = [];
 let zoomIcon = document.querySelector(".leaflet-left");
 let layersIcon = document.querySelector(".leaflet-bottom.leaflet-left");
 
-let k01_01 = document.querySelector("#k01_01");
-let k01_02 = document.querySelector("#k01_02");
-let k01_03 = document.querySelector("#k01_03");
-let k01_04 = document.querySelector("#k01_04");
-
+let k01_01 = document.querySelector("#k01_01").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k01_01");
+};
+let k01_02 = document.querySelector("#k01_02").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k01_02");
+};
+let k01_03 = document.querySelector("#k01_03").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k01_03");
+};
+let k01_04 = document.querySelector("#k01_04").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k01_04");
+};
+let k02_01 = document.querySelector("#k02_01").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k02_01");
+};
+let k02_02 = document.querySelector("#k02_02").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k02_02");
+};
+let k21_01 = document.querySelector("#k21_01").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k21_01");
+};
+let k21_02 = document.querySelector("#k21_02").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k21_02");
+};
+let k22 = document.querySelector("#k22").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k22");
+};
+let k23_01 = document.querySelector("#k23_01").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k23_01");
+};
+let k23_02 = document.querySelector("#k23_02").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k23_02");
+};
+let k23_03 = document.querySelector("#k23_03").onclick = function() {
+   actionPopUpsRequired = false;
+   sectionselected.update("k23_03");
+};
 
 for (let i = 0; i < iconLink1.length; i++) {
    iconLink1[i].addEventListener("click",(e)=>{
@@ -253,23 +296,6 @@ function toggleSidebar() {
 //when toggled, the sidebar doesnt expand and collapse on hover
 menuButton.onclick = function() {
    sidebarStatic = !sidebarStatic;
-}
-
-k01_01.onclick = function() {
-   actionPopUpsRequired = false;
-   sectionselected.update("k01_01");
-}
-k01_02.onclick = function() {
-   actionPopUpsRequired = false;
-   sectionselected.update("k01_02");
-}
-k01_03.onclick = function() {
-   actionPopUpsRequired = false;
-   sectionselected.update("k01_03");
-}
-k01_04.onclick = function() {
-   actionPopUpsRequired = false;
-   sectionselected.update("k01_04");
 }
 
 /*-------- Charts --------*/
@@ -419,37 +445,118 @@ function action (idIndicator) {
    switch (idIndicator) {
       case "k01_01":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId);
+         actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
-         myData = getk01_01();
+         // myData = getk01_01();
+         myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
          return detailedInfo(myData,"%");
       case "k01_02":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId);
+         actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
-         myData = getk01_02();
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k01_03":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k01_04":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k02_01":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k02_02":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k21_01":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k21_02":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k22":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k23_01":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k23_02":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
+         addDataChart(dynamicChart, myLabels, myData);
+         return detailedInfo(myData,"%");
+      case "k23_03":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         actionSetUp(actionPropId,"%");
+         grades = [0,20,40,60,80];
+         legend.update(1);
+         myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
          return detailedInfo(myData,"%");
       default:
-         return "Selecciona un indicador en la tabla de la izquierda";
+         return "Selecciona un indicador en la barra de la izquierda";
    }
 }
 
 //Sets up the color gradient for each indicator. Also resets popups (important)
-function actionSetUp(prop) {
+function actionSetUp(prop,unit) {
    actionPopUpsRequired = true;
    geojson.eachLayer(function (layer) {
       layer.closePopup();
       layer.unbindPopup(); //removing previous popups
-      layer.bindPopup("Superficie: " + eval(prop) + "%");
+      layer.bindPopup("Superficie: " + eval(prop) + unit);
       layer.setStyle({
          fillColor: getColorNum1(eval(prop)),
          stroke: true,
-         // color: getColorNum1(layer.feature.properties.k01_01),
-         color: '#3690c0',
+         color: getColorNum1(eval(prop)),
+         // color: '#3690c0',
          weight: 1,
          opacity: 1,
          fillOpacity: 0.7
@@ -486,48 +593,16 @@ function detailedInfo(data,unit) {
    return str;
 }
 
-function getk01_01(){
+function getData(ind) {
+   let strcode = "barriosData[nombreBarrio]." + ind + ";";
    let data = [];
    let i = 0;
    for (let nombreBarrio in barriosData) {
-      data[i] = barriosData[nombreBarrio].k01_01;
+      data[i] = eval(strcode);
+      console.log(strcode);
       i++;
    }
    return data;
-}
-function getk01_02(){
-   let data = [];
-   let i = 0;
-   for (let nombreBarrio in barriosData) {
-      data[i] = barriosData[nombreBarrio].k01_02;
-      i++;
-   }
-   return data;
-}
-
-function getNumViviendasTotal () {
-   var viviendasTotal = 0;
-   for (var i in sectors) {
-      viviendasTotal += sectors[i].t16_1;
-   }
-   return viviendasTotal;
-}
-
-function getViviendasHabitaciones() {
-   var hab1 = 0; var hab2 = 0; var hab3 = 0; var hab4 = 0;
-   var hab5 = 0; var hab6 = 0; var hab7 = 0; var hab8 = 0; var hab9 = 0;
-   for (let i in sectors) {
-      hab1 += sectors[i].t20_1;
-      hab2 += sectors[i].t20_2;
-      hab3 += sectors[i].t20_3;
-      hab4 += sectors[i].t20_4;
-      hab5 += sectors[i].t20_5;
-      hab6 += sectors[i].t20_6;
-      hab7 += sectors[i].t20_7;
-      hab8 += sectors[i].t20_8;
-      hab9 += sectors[i].t20_9;
-   }
-   return [hab1, hab2, hab3, hab4, hab5, hab6, hab7, hab8, hab9];
 }
 
 /*-------- Aux functions --------*/
@@ -614,21 +689,21 @@ function getColorLegend(num,value) {
    }
 }
 
-// function getColorNum1(value) {
-//    return   value >= 80  ? '#2B4FB5' :
-//             value >= 60  ? '#2E7ABF' :
-//             value >= 40  ? '#318FA8' :
-//             value >= 20  ? '#2EBFB8' :
-//             '#2BB587';
-// }
-
 function getColorNum1(value) {
-   return   value >= 80  ? '#034e7b' :
-            value >= 60  ? '#0570b0' :
-            value >= 40  ? '#3690c0' :
-            value >= 20  ? '#74a9cf' :
-            '#a6bddb';
+   return   value >= 80  ? '#964567' :
+            value >= 60  ? '#8C5788' :
+            value >= 40  ? '#607CAC' :
+            value >= 20  ? '#508CAE' :
+            '#5498A9';
 }
+
+// function getColorNum1(value) {
+//    return   value >= 80  ? '#034e7b' :
+//             value >= 60  ? '#0570b0' :
+//             value >= 40  ? '#3690c0' :
+//             value >= 20  ? '#74a9cf' :
+//             '#a6bddb';
+// }
 
 function getColorNum3(value) {
    return   value > 2000 ? '#006d2c' :

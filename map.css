@@ -103,6 +103,10 @@
     /*bottom: 10px;*/
 }
 
+.details_scroller::-webkit-scrollbar {
+    display: none;
+}
+
 .legend {
     line-height: 18px;
     color: #555;
