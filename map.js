@@ -300,8 +300,7 @@ menuButton.onclick = function() {
 
 /*-------- Charts --------*/
 let myLabel = "";
-let myLabels = ["1","2","3","4","5","6","8","9","10","11","12",
-   "13","14","15","16","17","18","19","20","21","22","23","24"];
+let myLabels = [];
 let myData = [];
 let colorsChart = [];
 graphingChart();
@@ -547,6 +546,8 @@ function action (idIndicator) {
 
 //Sets up the color gradient for each indicator. Also resets popups (important)
 function actionSetUp(prop,unit) {
+   myLabels = ["1","2","3","4","5","6","8","9","10","11","12",
+      "13","14","15","16","17","18","19","20","21","22","23","24"];
    actionPopUpsRequired = true;
    geojson.eachLayer(function (layer) {
       layer.closePopup();
