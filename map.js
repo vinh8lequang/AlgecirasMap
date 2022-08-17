@@ -486,8 +486,6 @@ function action (idIndicator) {
          legend.update(1);
          // myData = getk01_01();
          myData = getData(idIndicator);
-         const average = myData.reduce((a, b) => a + b, 0) / myData.length;
-         ciudad.update(average,"%");
          break;
       case "k01_02":
          actionPropId = "layer.feature.properties." + idIndicator;
@@ -569,6 +567,8 @@ function action (idIndicator) {
       default:
          return "Selecciona un indicador en la tabla de la izquierda";
    }
+   const average = myData.reduce((a, b) => a + b, 0) / myData.length;
+   ciudad.update(average,"%");
    longLabelsActive ? addDataChart(dynamicChart, myLabelsLong, myData) : addDataChart(dynamicChart, myLabels, myData);
    return getFuentes(idIndicator);
 }
@@ -627,6 +627,13 @@ function getFuentes(ind) {
    //hacer bucle con el indicador
    var str = '<h3>Fuentes</h3>' +
       'Población: IEACA (2021)' +
+      '<br/>' + 'Superficie ámbito: EELL (2022)' +
+      '<br/>' + 'Superficie ámbito: EELL (2022)' +
+      '<br/>' + 'Superficie ámbito: EELL (2022)' +
+      '<br/>' + 'Superficie ámbito: EELL (2022)' +
+      '<br/>' + 'Superficie ámbito: EELL (2022)' +
+      '<br/>' + 'Superficie ámbito: EELL (2022)' +
+      '<br/>' + 'Superficie ámbito: EELL (2022)' +
       '<br/>' + 'Superficie ámbito: EELL (2022)';
    return str;
 }

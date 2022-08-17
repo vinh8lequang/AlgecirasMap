@@ -57,7 +57,7 @@
 
 .charts.active {
     width: 600px;
-    height: 30rem;
+    height: 35rem;
     /*box-shadow: 0 10px 30px rgba(0,0,0,0.2);*/
 }
 
@@ -70,6 +70,8 @@
     text-decoration: none;
     background-color: #3d7685;
     color: #fff;
+    /*background-color: #fafafa;*/
+    /*color: #3d7685;*/
     /*transform: translate(335%,-120%);*/
     transform: translate(300px,-25px);
     transition: all 1s ease;
@@ -100,7 +102,7 @@
 	font: 15px/16px Arial, Helvetica, sans-serif;
 	width: 400px;
     /*max-height: 380px;*/
-    max-height: 8rem;
+    max-height: 7.5rem;
     /*height: 400px;*/
 	/*z-index: 999;*/
 	overflow-y: scroll;
@@ -121,6 +123,7 @@
     width: 400px;
     max-height: 5rem;
     transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0);
 }
 
 .legend {
