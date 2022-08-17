@@ -58,8 +58,8 @@ var baseMaps = {
    "Open Street Maps": osmMap,
    "Google Streets": googleStreets,
    "Google Hybrid": googleHybrid,
-   "Light Map": lightMap,
-   "Dark Map": darkMap,
+   "Mapa Claro": lightMap,
+   "Mapa Oscuro": darkMap,
    // "Google Satellite": googleSat,
    // "Google Terrain": googleTerrain
 };
@@ -131,7 +131,7 @@ map.on('baselayerchange', function() {
    }, 8000);
 });
 
-let barriosData = {}; //new Object()
+var barriosData = {}; //new Object()
 barrios.features.forEach(loadData);
 function loadData(item){
    let nombreBarrio = item.properties.barrio;
@@ -193,51 +193,51 @@ let layersIcon = document.querySelector(".leaflet-bottom.leaflet-left");
 
 let k01_01 = document.querySelector("#k01_01").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k01_01");
+   sectionselected.update("k01_01","Superficie de Cobertura artificial (%)");
 };
 let k01_02 = document.querySelector("#k01_02").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k01_02");
+   sectionselected.update("k01_02","Superficie de Cultivos (%)");
 };
 let k01_03 = document.querySelector("#k01_03").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k01_03");
+   sectionselected.update("k01_03","Superficie de zonas húmedas (%)");
 };
 let k01_04 = document.querySelector("#k01_04").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k01_04");
+   sectionselected.update("k01_04","Superficie forestal (%)");
 };
 let k02_01 = document.querySelector("#k02_01").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k02_01");
+   sectionselected.update("k02_01","Superficie municipal destinada a explotaciones agrarias y forestales (%)");
 };
 let k02_02 = document.querySelector("#k02_02").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k02_02");
+   sectionselected.update("k02_02","Superficie municipal destinada a explotaciones agrarias y forestales respecto al suelo urbano y urbanizable delimitado de la ciudad (%)");
 };
 let k21_01 = document.querySelector("#k21_01").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k21_01");
+   sectionselected.update("k21_01","Índice de envejecimiento de la población (%)");
 };
 let k21_02 = document.querySelector("#k21_02").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k21_02");
+   sectionselected.update("k21_02","Índice de senectud de la población (%)");
 };
 let k22 = document.querySelector("#k22").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k22");
+   sectionselected.update("k22","Población extranjera (%)");
 };
 let k23_01 = document.querySelector("#k23_01").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k23_01");
+   sectionselected.update("k23_01","Índice de dependencia total (%)");
 };
 let k23_02 = document.querySelector("#k23_02").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k23_02");
+   sectionselected.update("k23_02","Índice de dependencia infantil (%)");
 };
 let k23_03 = document.querySelector("#k23_03").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k23_03");
+   sectionselected.update("k23_03","Índice de dependencia de mayores (%)");
 };
 
 for (let i = 0; i < iconLink1.length; i++) {
@@ -328,8 +328,8 @@ var dynamicChart = new Chart(myChart,{
    data: {
       labels: myLabels,
       datasets: [{
-         backgroundColor: colorsChart,
-         // backgroundColor: '#5498a9',
+         // backgroundColor: colorsChart,
+         backgroundColor: '#3d7685',
          label: "Dato",
          data: myData,
       }],
@@ -387,13 +387,15 @@ sectionselected.onAdd = function(map) {
    return this._div;
 };
 
-sectionselected.update = function(idIndicator) {
+sectionselected.update = function(idIndicator,nameIndicator) {
    if (!actionPopUpsRequired) {
-      this._div.innerHTML = '<h4>Información</h4>' +  (idIndicator ? action(idIndicator)
-         : "Selecciona un indicador en la tabla de la izquierda");
-      // var div = document.querySelector(".sidebar .logo_content .logo_name");
-      // div.innerHTML= '<h4>Indicadores</h4>' +  (num ? action(num)
-      //      : "Selecciona un indicador en la tabla de la izquierda");
+      if (nameIndicator !== undefined) {
+         this._div.innerHTML = '<h4>' + nameIndicator + '</h4>' +  (idIndicator ? action(idIndicator)
+            : "Selecciona un indicador en la tabla de la izquierda");
+      } else {
+         this._div.innerHTML = '<h4>Información</h4>' +  (idIndicator ? action(idIndicator)
+            : "Selecciona un indicador en la tabla de la izquierda");
+      }
    }
 }
 
@@ -402,22 +404,22 @@ sectionselected.addTo(map);
 /*-------- Legend panel --------*/
 var legend = L.control({position: 'bottomleft'});
 var grades = [];
-var div;
+var divLegend;
 legend.onAdd = function (map) {
-   div = L.DomUtil.create('div', 'info legend'),
+   divLegend = L.DomUtil.create('div', 'info legend'),
       labels = [];
    // loop through our density intervals and generate a label with a colored square for each interval
-   L.DomEvent.disableClickPropagation(div);
-   L.DomEvent.disableScrollPropagation(div);
-   return div;
+   L.DomEvent.disableClickPropagation(divLegend);
+   L.DomEvent.disableScrollPropagation(divLegend);
+   return divLegend;
 };
 
 legend.update = function(num) {
-   div.innerHTML = '';
+   divLegend.innerHTML = '';
    if (num !== 0) {
-      div.innerHTML = '<h4>Leyenda</h4>';
+      divLegend.innerHTML = '<h4>Leyenda</h4>';
       for (let i = 0; i < grades.length; i++) {
-         div.innerHTML +=
+         divLegend.innerHTML +=
             '<i style="background:' + getColorLegend(num,grades[i]) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
       }
@@ -450,7 +452,7 @@ function action (idIndicator) {
          // myData = getk01_01();
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k01_02":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -458,7 +460,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k01_03":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -466,7 +468,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k01_04":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -474,7 +476,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k02_01":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -482,7 +484,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k02_02":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -490,7 +492,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k21_01":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -498,7 +500,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k21_02":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -506,7 +508,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k22":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -514,7 +516,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k23_01":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -522,7 +524,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k23_02":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -530,7 +532,7 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       case "k23_03":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
@@ -538,9 +540,9 @@ function action (idIndicator) {
          legend.update(1);
          myData = getData(idIndicator);
          addDataChart(dynamicChart, myLabels, myData);
-         return detailedInfo(myData,"%");
+         return getFuentes(idIndicator);
       default:
-         return "Selecciona un indicador en la barra de la izquierda";
+         return "Selecciona un indicador en la tabla de la izquierda";
    }
 }
 
@@ -591,6 +593,14 @@ function detailedInfo(data,unit) {
       i++;
       y++;
    }
+   return str;
+}
+
+function getFuentes(ind) {
+   //hacer bucle con el indicador
+   var str = '<h3>Fuentes</h3>' +
+      'Población: IEACA (2021)' +
+      '<br/>' + 'Superficie ámbito: EELL (2022)';
    return str;
 }
 
