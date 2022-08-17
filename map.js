@@ -9,7 +9,7 @@ var map = L.map('map', {
    maxZoom: 16,
    minZoom: 10,
    // layers: [googleStreets, cities]
-}).setView([36.113,-5.48], 13);
+}).setView([36.113,-5.46], 13);
 
 var osmMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
    maxZoom: 19,
@@ -40,15 +40,15 @@ var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z=
    subdomains:['mt0','mt1','mt2','mt3']
 });
 
-var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-   maxZoom: 20,
-   subdomains:['mt0','mt1','mt2','mt3']
-});
-
-var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
-   maxZoom: 20,
-   subdomains:['mt0','mt1','mt2','mt3']
-});
+// var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+//    maxZoom: 20,
+//    subdomains:['mt0','mt1','mt2','mt3']
+// });
+//
+// var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+//    maxZoom: 20,
+//    subdomains:['mt0','mt1','mt2','mt3']
+// });
 
 var layer1 = L.layerGroup().addTo(map);
 var layer2 = L.layerGroup();
@@ -132,9 +132,12 @@ map.on('baselayerchange', function() {
 });
 
 var barriosData = {}; //new Object()
+var myLabelsLong = [];
+var longLabelsActive = false;
 barrios.features.forEach(loadData);
 function loadData(item){
    let nombreBarrio = item.properties.barrio;
+   myLabelsLong.push(nombreBarrio);
    barriosData[nombreBarrio] = item.properties;
 }
 
@@ -158,7 +161,7 @@ function resetHighlight(e) {
 function showSpecDetails(e) {
    var layer = e.target;
    // map.fitBounds(e.target.getBounds());
-   sectionselected.update(layer.feature.properties);
+   barrioSelected.update(layer.feature.properties);
 }
 
 function onEachFeature(feature, layer) {
@@ -193,51 +196,51 @@ let layersIcon = document.querySelector(".leaflet-bottom.leaflet-left");
 
 let k01_01 = document.querySelector("#k01_01").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k01_01","Superficie de Cobertura artificial (%)");
+   barrioSelected.update("k01_01","Superficie de Cobertura artificial (%)");
 };
 let k01_02 = document.querySelector("#k01_02").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k01_02","Superficie de Cultivos (%)");
+   barrioSelected.update("k01_02","Superficie de Cultivos (%)");
 };
 let k01_03 = document.querySelector("#k01_03").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k01_03","Superficie de zonas húmedas (%)");
+   barrioSelected.update("k01_03","Superficie de zonas húmedas (%)");
 };
 let k01_04 = document.querySelector("#k01_04").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k01_04","Superficie forestal (%)");
+   barrioSelected.update("k01_04","Superficie forestal (%)");
 };
 let k02_01 = document.querySelector("#k02_01").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k02_01","Superficie municipal destinada a explotaciones agrarias y forestales (%)");
+   barrioSelected.update("k02_01","Superficie municipal destinada a explotaciones agrarias y forestales (%)");
 };
 let k02_02 = document.querySelector("#k02_02").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k02_02","Superficie municipal destinada a explotaciones agrarias y forestales respecto al suelo urbano y urbanizable delimitado de la ciudad (%)");
+   barrioSelected.update("k02_02","Superficie municipal destinada a explotaciones agrarias y forestales respecto al suelo urbano y urbanizable delimitado de la ciudad (%)");
 };
 let k21_01 = document.querySelector("#k21_01").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k21_01","Índice de envejecimiento de la población (%)");
+   barrioSelected.update("k21_01","Índice de envejecimiento de la población (%)");
 };
 let k21_02 = document.querySelector("#k21_02").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k21_02","Índice de senectud de la población (%)");
+   barrioSelected.update("k21_02","Índice de senectud de la población (%)");
 };
 let k22 = document.querySelector("#k22").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k22","Población extranjera (%)");
+   barrioSelected.update("k22","Población extranjera (%)");
 };
 let k23_01 = document.querySelector("#k23_01").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k23_01","Índice de dependencia total (%)");
+   barrioSelected.update("k23_01","Índice de dependencia total (%)");
 };
 let k23_02 = document.querySelector("#k23_02").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k23_02","Índice de dependencia infantil (%)");
+   barrioSelected.update("k23_02","Índice de dependencia infantil (%)");
 };
 let k23_03 = document.querySelector("#k23_03").onclick = function() {
    actionPopUpsRequired = false;
-   sectionselected.update("k23_03","Índice de dependencia de mayores (%)");
+   barrioSelected.update("k23_03","Índice de dependencia de mayores (%)");
 };
 
 for (let i = 0; i < iconLink1.length; i++) {
@@ -299,17 +302,17 @@ menuButton.onclick = function() {
 }
 
 /*-------- Charts --------*/
-let myLabel = "";
-let myLabels = [];
-let myData = [];
-let colorsChart = [];
+var myLabel = "";
+var myLabels = [];
+var myData = [];
+var colorsChart = [];
 graphingChart();
 function graphingChart() {
    var info = L.control({position: 'bottomright'});
    info.onAdd = function (map) {
       var div = L.DomUtil.create('div','info charts');
-      div.innerHTML += '<h4> Gráfica </h4>';
-      div.innerHTML += '<button id="chartbtn"> Cambiar tamaño </button>'
+      div.innerHTML += '<h4> Escala barrio </h4>';
+      div.innerHTML += '<button id="chartbtn"> Mostrar nombres </button>'
       div.innerHTML += '<canvas id="myChart"></canvas>';
       L.DomEvent.disableClickPropagation(div);
       L.DomEvent.disableScrollPropagation(div);
@@ -374,12 +377,23 @@ let chart1 = document.querySelector(".charts");
 
 chartButton.onclick = function() {
    chart1.classList.toggle("active");
+   showLongLabels();
 }
 
+function showLongLabels () {
+   if (longLabelsActive) {
+      removeDataChart(dynamicChart);
+      addDataChart(dynamicChart, myLabels, myData);
+   } else {
+      removeDataChart(dynamicChart);
+      addDataChart(dynamicChart, myLabelsLong, myData);
+   }
+   longLabelsActive = !longLabelsActive;
+}
 /*-------- Information panel --------*/
-var sectionselected = L.control({position: 'topright'});
+var barrioSelected = L.control({position: 'topright'});
 
-sectionselected.onAdd = function(map) {
+barrioSelected.onAdd = function(map) {
    this._div = L.DomUtil.create('div', 'info details_scroller');
    L.DomEvent.disableClickPropagation(this._div);
    L.DomEvent.disableScrollPropagation(this._div);
@@ -387,7 +401,7 @@ sectionselected.onAdd = function(map) {
    return this._div;
 };
 
-sectionselected.update = function(idIndicator,nameIndicator) {
+barrioSelected.update = function(idIndicator,nameIndicator) {
    if (!actionPopUpsRequired) {
       if (nameIndicator !== undefined) {
          this._div.innerHTML = '<h4>' + nameIndicator + '</h4>' +  (idIndicator ? action(idIndicator)
@@ -399,7 +413,7 @@ sectionselected.update = function(idIndicator,nameIndicator) {
    }
 }
 
-sectionselected.addTo(map);
+barrioSelected.addTo(map);
 
 /*-------- Legend panel --------*/
 var legend = L.control({position: 'bottomleft'});
@@ -428,6 +442,27 @@ legend.update = function(num) {
 
 legend.addTo(map);
 
+/*-------- Escala ciudad panel --------*/
+var ciudad = L.control({position: 'bottomright'});
+var divCiu;
+ciudad.onAdd = function (map) {
+   divCiu = L.DomUtil.create('div', 'info ciudad');
+   L.DomEvent.disableClickPropagation(divCiu);
+   L.DomEvent.disableScrollPropagation(divCiu);
+   this.update();
+   return divCiu;
+};
+
+ciudad.update = function(data,unit) {
+   if (data !== undefined) {
+      divCiu.innerHTML = '<h4>Escala ciudad </h4>' + data.toFixed(2) + unit;
+   } else {
+      divCiu.innerHTML = '<h4>Escala ciudad </h4>';
+   }
+}
+
+ciudad.addTo(map);
+
 
 /*-------- Indicator functions --------*/
 
@@ -451,99 +486,91 @@ function action (idIndicator) {
          legend.update(1);
          // myData = getk01_01();
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         const average = myData.reduce((a, b) => a + b, 0) / myData.length;
+         ciudad.update(average,"%");
+         break;
       case "k01_02":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k01_03":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k01_04":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k02_01":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k02_02":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k21_01":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k21_02":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k22":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k23_01":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k23_02":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       case "k23_03":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
          legend.update(1);
          myData = getData(idIndicator);
-         addDataChart(dynamicChart, myLabels, myData);
-         return getFuentes(idIndicator);
+         break;
       default:
          return "Selecciona un indicador en la tabla de la izquierda";
    }
+   longLabelsActive ? addDataChart(dynamicChart, myLabelsLong, myData) : addDataChart(dynamicChart, myLabels, myData);
+   return getFuentes(idIndicator);
 }
 
 //Sets up the color gradient for each indicator. Also resets popups (important)

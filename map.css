@@ -56,9 +56,9 @@
 }
 
 .charts.active {
-    width: 1000px;
-    height: 650px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 600px;
+    height: 30rem;
+    /*box-shadow: 0 10px 30px rgba(0,0,0,0.2);*/
 }
 
 #chartbtn {
@@ -81,7 +81,7 @@
 
 .charts.active #chartbtn{
     /*transform: translate(1015%,-120%);*/
-    transform: translate(900px,-25px);
+    transform: translate(500px,-25px);
 }
 
 
@@ -89,11 +89,11 @@
     margin: 0 0 5px;
     /*color: #777;*/
     color: #3d7685;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .info h3 {
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .details_scroller{
@@ -110,6 +110,17 @@
 
 .details_scroller::-webkit-scrollbar {
     display: none;
+}
+
+.ciudad h4 {
+    display: inline;
+}
+
+.ciudad {
+    font: 15px/16px Arial, Helvetica, sans-serif;
+    width: 400px;
+    max-height: 5rem;
+    transform: translateY(-8px);
 }
 
 .legend {
