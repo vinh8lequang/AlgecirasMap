@@ -228,11 +228,11 @@ let k04 = document.querySelector("#k04").onclick = function() {
 };
 let k05 = document.querySelector("#k05").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k05","Densidad de población en suelo urbano (hab/ha)");
+   barrioSelected.update("k05","Densidad de población en suelo urbano (hab/hab)");
 };
 let k06 = document.querySelector("#k06").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k06","Densidad de vivienda (viv/ha)");
+   barrioSelected.update("k06","Densidad de vivienda (viv/hab)");
 };
 let k07 = document.querySelector("#k07").onclick = function() {
    actionPopUpsRequired = false;
@@ -582,13 +582,13 @@ function action (idIndicator) {
          actionSetUp(actionPropId);
          break;
       case "k05":
-         unit = "hab/ha";
+         unit = "hab/hab";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k06":
-         unit = "viv/ha";
+         unit = "viv/hab";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
