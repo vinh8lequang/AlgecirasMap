@@ -218,6 +218,26 @@ let k02_02 = document.querySelector("#k02_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k02_02","Superficie municipal destinada a explotaciones agrarias y forestales respecto al suelo urbano y urbanizable delimitado de la ciudad (%)");
 };
+let k03 = document.querySelector("#k03").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k03","Superficie del suelo no reutilizable (%)");
+};
+let k04 = document.querySelector("#k04").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k04","Suelo urbano discontinuo (%)");
+};
+let k05 = document.querySelector("#k05").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k05","Densidad de población en suelo urbano (hab/ha)");
+};
+let k06 = document.querySelector("#k06").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k06","Densidad de vivienda (viv/ha)");
+};
+let k07 = document.querySelector("#k07").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k07","Compacidad urbana (m²t/m²s)");
+};
 let k21_01 = document.querySelector("#k21_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k21_01","Índice de envejecimiento de la población (%)");
@@ -243,23 +263,21 @@ let k23_03 = document.querySelector("#k23_03").onclick = function() {
    barrioSelected.update("k23_03","Índice de dependencia de mayores (%)");
 };
 
-setUpMenu1();
-function setUpMenu1 () {
-   for (let i = 0; i < iconLink1.length; i++) {
-      iconLink1[i].addEventListener("click",(e)=>{
-         // console.log(e.target.parentElement.parentElement.parentElement.classList.value);
-         var element = e.target.parentElement.parentElement.parentElement;
-         //this if is to solve the bug when "li" is clicked instead of clicking on "icon_link1"
-         if (element.classList.value === "showmenu1" ||
-            element.classList.value === "") {
-            dropTables1[i] = element;
-            // let dropTable = e.target.parentElement.parentElement.parentElement;
-            dropTables1[i].classList.toggle("showmenu1");
-         }
+for (let i = 0; i < iconLink1.length; i++) {
+   iconLink1[i].addEventListener("click",(e)=>{
+      // console.log(e.target.parentElement.parentElement.parentElement.classList.value);
+      var element = e.target.parentElement.parentElement.parentElement;
+      //this if is to solve the bug when "li" is clicked instead of clicking on "icon_link1"
+      if (element.classList.value === "showmenu1" ||
+         element.classList.value === "") {
+         dropTables1[i] = element;
+         // let dropTable = e.target.parentElement.parentElement.parentElement;
+         dropTables1[i].classList.toggle("showmenu1");
+      }
 
-      })
-   }
+   })
 }
+
 
 
 // for (let i = 0; i < arrow1.length; i++) {
@@ -290,7 +308,7 @@ for (let i = 0; i < iconLink2.length; i++) {
 let sidebarStatic  = false;
 function toggleSidebar() {
    if (!sidebarStatic) {
-      console.log(sidebar.classList.value);
+      // console.log(sidebar.classList.value);
       sidebar.classList.toggle("active");
       zoomIcon.classList.toggle("active");
       layersIcon.classList.toggle("active");
@@ -466,7 +484,7 @@ ciudad.onAdd = function (map) {
 
 ciudad.update = function(data,unit) {
    if (data !== undefined) {
-      divCiu.innerHTML = '<h4>Escala ciudad </h4>' + data.toFixed(2) + unit;
+      divCiu.innerHTML = '<h4>Escala ciudad </h4>' + data.toFixed(2) + ' ' + unit;
    } else {
       divCiu.innerHTML = '<h4>Escala ciudad </h4>';
    }
@@ -486,113 +504,114 @@ ciudad.addTo(map);
 
 //this var is true when an action that requires popups is executed
 var actionPopUpsRequired = false;
-let actionPropId = ""; // to differentiate between the different actions. using eval() later to execute
+var actionPropId = ""; // to differentiate between the different actions. using eval() later to execute
+var unit;
 function action (idIndicator) {
    removeDataChart(dynamicChart);
    switch (idIndicator) {
       case "k01_01":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
-         // myData = getk01_01();
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       case "k01_02":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       case "k01_03":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       case "k01_04":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       case "k02_01":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       case "k02_02":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
+         break;
+      case "k03":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
+         break;
+      case "k04":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
+         break;
+      case "k05":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId,"hab/ha");
+         break;
+      case "k06":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId,"viv/ha");
+         break;
+      case "k07":
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId,"m²t/m²s");
          break;
       case "k21_01":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       case "k21_02":
          actionPropId = "layer.feature.properties." + idIndicator;
          actionSetUp(actionPropId,"%");
          grades = [0,20,40,60,80];
-         legend.update(1);
-         myData = getData(idIndicator);
          break;
       case "k22":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       case "k23_01":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       case "k23_02":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       case "k23_03":
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
-         grades = [0,20,40,60,80];
-         legend.update(1);
          myData = getData(idIndicator);
+         actionSetUp(actionPropId,"%");
          break;
       default:
          return "Selecciona un indicador en la tabla de la izquierda";
    }
    const average = myData.reduce((a, b) => a + b, 0) / myData.length;
-   ciudad.update(average,"%");
+   ciudad.update(average,unit);
    longLabelsActive ? addDataChart(dynamicChart, myLabelsLong, myData) : addDataChart(dynamicChart, myLabels, myData);
    return getFuentes(idIndicator);
 }
 
 //Sets up the color gradient for each indicator. Also resets popups (important)
-function actionSetUp(prop,unit) {
+function actionSetUp(prop,thisunit) {
    myLabels = ["1","2","3","4","5","6","8","9","10","11","12",
       "13","14","15","16","17","18","19","20","21","22","23","24"];
    actionPopUpsRequired = true;
    geojson.eachLayer(function (layer) {
       layer.closePopup();
       layer.unbindPopup(); //removing previous popups
-      layer.bindPopup("Superficie: " + eval(prop) + unit);
+      layer.bindPopup("Superficie: " + eval(prop) + " " + unit);
       layer.setStyle({
          fillColor: getColorNum1(eval(prop)),
          stroke: true,
@@ -603,6 +622,7 @@ function actionSetUp(prop,unit) {
          fillOpacity: 0.7
       });
    });
+   unit = thisunit;
 }
 
 /*-------- Getting/calculating data functions --------*/
@@ -650,14 +670,29 @@ function getFuentes(ind) {
 }
 
 function getData(ind) {
-   let strcode = "barriosData[nombreBarrio]." + ind + ";";
-   let data = [];
-   let i = 0;
+   var strcode = "barriosData[nombreBarrio]." + ind + ";";
+   var data = [];
+   var i = 0;
    for (let nombreBarrio in barriosData) {
       data[i] = eval(strcode);
-      console.log(strcode);
+      // console.log(strcode);
       i++;
    }
+
+   if (unit === "%") {
+      grades = [0,20,40,60,80];
+   } else {
+      var m = Math.max(...data);
+      if (m < 10) {
+         grades = [0,(0.2*m).toFixed(2), (0.4*m).toFixed(2),
+            (0.6*m).toFixed(2), (0.8*m).toFixed(2)];
+      } else {
+         grades = [0, Math.trunc(0.2*m), Math.trunc(0.4*m),
+            Math.trunc(0.6*m), Math.trunc(0.8*m)];
+      }
+   }
+
+   legend.update(1);
    return data;
 }
 
@@ -746,10 +781,10 @@ function getColorLegend(num,value) {
 }
 
 function getColorNum1(value) {
-   return   value >= 80  ? '#964567' :
-      value >= 60  ? '#8C5788' :
-         value >= 40  ? '#607CAC' :
-            value >= 20  ? '#508CAE' :
+   return    value >= grades[4]  ? '#964567' :
+             value >= grades[3]  ? '#8C5788' :
+             value >= grades[2]  ? '#607CAC' :
+             value >= grades[1]  ? '#508CAE' :
                '#5498A9';
 }
 
