@@ -254,6 +254,14 @@ let k10_02 = document.querySelector("#k10_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k10_02","Densidad zonas verdes (%)");
 };
+let k12_01 = document.querySelector("#k12_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k12_01","Longitud calles peatonales (%)");
+};
+let k20 = document.querySelector("#k20").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k20","Variación de la población 2007-2017 (%)");
+};
 let k21_01 = document.querySelector("#k21_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k21_01","Índice de envejecimiento de la población (%)");
@@ -610,6 +618,19 @@ function action (idIndicator) {
          actionSetUp(actionPropId);
          break;
       case "k10_02":
+         unit = "%"
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k12_01":
+         unit = "%"
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k20":
+         //FIXME: values are higher than 100
          unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
