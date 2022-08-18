@@ -93,6 +93,7 @@
     position: relative;
     list-style: none;
     padding: 0 6px 0 6px;
+    margin: 2px 0 2px 0;
 }
 
 .sidebar .nav_links li .icon_link1 {

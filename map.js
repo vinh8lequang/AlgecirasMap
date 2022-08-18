@@ -9,7 +9,9 @@ var map = L.map('map', {
    maxZoom: 16,
    minZoom: 10,
    // layers: [googleStreets, cities]
-}).setView([36.113,-5.46], 13);
+}).setView([36.113,-15.46], 13);
+
+//[36.113,-5.46]
 
 var osmMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
    maxZoom: 19,
@@ -243,13 +245,24 @@ let k23_03 = document.querySelector("#k23_03").onclick = function() {
    barrioSelected.update("k23_03","Índice de dependencia de mayores (%)");
 };
 
-for (let i = 0; i < iconLink1.length; i++) {
-   iconLink1[i].addEventListener("click",(e)=>{
-      dropTables1[i] = e.target.parentElement.parentElement.parentElement;
-      // let dropTable = e.target.parentElement.parentElement.parentElement;
-      dropTables1[i].classList.toggle("showmenu1");
-   })
+setUpMenu1();
+function setUpMenu1 () {
+   for (let i = 0; i < iconLink1.length; i++) {
+      iconLink1[i].addEventListener("click",(e)=>{
+         // console.log(e.target.parentElement.parentElement.parentElement.classList.value);
+         var element = e.target.parentElement.parentElement.parentElement;
+         //this if is to solve the bug when "li" is clicked instead of clicking on "icon_link1"
+         if (element.classList.value === "showmenu1" ||
+            element.classList.value === "") {
+            dropTables1[i] = element;
+            // let dropTable = e.target.parentElement.parentElement.parentElement;
+            dropTables1[i].classList.toggle("showmenu1");
+         }
+
+      })
+   }
 }
+
 
 // for (let i = 0; i < arrow1.length; i++) {
 //     arrow1[i].addEventListener("click",(e)=>{
@@ -279,8 +292,8 @@ for (let i = 0; i < iconLink2.length; i++) {
 let sidebarStatic  = false;
 function toggleSidebar() {
    if (!sidebarStatic) {
-      sidebar.classList.toggle("active");
       console.log(sidebar.classList.value);
+      sidebar.classList.toggle("active");
       zoomIcon.classList.toggle("active");
       layersIcon.classList.toggle("active");
       for (let i in dropTables1) {
@@ -736,10 +749,10 @@ function getColorLegend(num,value) {
 
 function getColorNum1(value) {
    return   value >= 80  ? '#964567' :
-            value >= 60  ? '#8C5788' :
-            value >= 40  ? '#607CAC' :
+      value >= 60  ? '#8C5788' :
+         value >= 40  ? '#607CAC' :
             value >= 20  ? '#508CAE' :
-            '#5498A9';
+               '#5498A9';
 }
 
 // function getColorNum1(value) {
@@ -752,9 +765,9 @@ function getColorNum1(value) {
 
 function getColorNum3(value) {
    return   value > 2000 ? '#006d2c' :
-            value > 1500  ? '#2ca25f' :
-            value > 1000  ? '#66c2a4' :
+      value > 1500  ? '#2ca25f' :
+         value > 1000  ? '#66c2a4' :
             value > 800  ? '#99d8c9' :
-            value > 600   ? '#ccece6' :
-            '#edf8fb';
+               value > 600   ? '#ccece6' :
+                  '#edf8fb';
 }
