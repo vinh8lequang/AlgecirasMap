@@ -238,6 +238,22 @@ let k07 = document.querySelector("#k07").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k07","Compacidad urbana (m²t/m²s)");
 };
+let k08_01 = document.querySelector("#k08_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k08_01","Superficie construida uso residencial (m²t/m²s)");
+};
+let k08_02 = document.querySelector("#k08_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k08_02","Superficie construida uso residencial (%)");
+};
+let k10_01 = document.querySelector("#k10_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k10_01","Zonas verdes por habitante");
+};
+let k10_02 = document.querySelector("#k10_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k10_02","Densidad zonas verdes (%)");
+};
 let k21_01 = document.querySelector("#k21_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k21_01","Índice de envejecimiento de la población (%)");
@@ -510,89 +526,131 @@ function action (idIndicator) {
    removeDataChart(dynamicChart);
    switch (idIndicator) {
       case "k01_01":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k01_02":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k01_03":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k01_04":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k02_01":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k02_02":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k03":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k04":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k05":
+         unit = "hab/ha";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"hab/ha");
+         actionSetUp(actionPropId);
          break;
       case "k06":
+         unit = "viv/ha";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"viv/ha");
+         actionSetUp(actionPropId);
          break;
       case "k07":
+         unit = "m²t/m²s";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"m²t/m²s");
+         actionSetUp(actionPropId);
+         break;
+      case "k08_01":
+         unit = "m²t/m²s";
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k08_02":
+         unit = "%"
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k10_01":
+         unit = "zon/hab"
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k10_02":
+         unit = "%"
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
          break;
       case "k21_01":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k21_02":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
-         actionSetUp(actionPropId,"%");
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
          grades = [0,20,40,60,80];
          break;
       case "k22":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k23_01":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k23_02":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       case "k23_03":
+         unit = "%"
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
-         actionSetUp(actionPropId,"%");
+         actionSetUp(actionPropId);
          break;
       default:
          return "Selecciona un indicador en la tabla de la izquierda";
@@ -604,7 +662,7 @@ function action (idIndicator) {
 }
 
 //Sets up the color gradient for each indicator. Also resets popups (important)
-function actionSetUp(prop,thisunit) {
+function actionSetUp(prop) {
    myLabels = ["1","2","3","4","5","6","8","9","10","11","12",
       "13","14","15","16","17","18","19","20","21","22","23","24"];
    actionPopUpsRequired = true;
@@ -622,7 +680,7 @@ function actionSetUp(prop,thisunit) {
          fillOpacity: 0.7
       });
    });
-   unit = thisunit;
+   legend.update(1);
 }
 
 /*-------- Getting/calculating data functions --------*/
@@ -691,8 +749,6 @@ function getData(ind) {
             Math.trunc(0.6*m), Math.trunc(0.8*m)];
       }
    }
-
-   legend.update(1);
    return data;
 }
 
