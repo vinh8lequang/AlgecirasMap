@@ -9,9 +9,7 @@ var map = L.map('map', {
    maxZoom: 16,
    minZoom: 10,
    // layers: [googleStreets, cities]
-}).setView([36.113,-15.46], 13);
-
-//[36.113,-5.46]
+}).setView([36.113,-5.46], 13);
 
 var osmMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
    maxZoom: 19,
