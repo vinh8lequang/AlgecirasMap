@@ -286,6 +286,38 @@ let k23_03 = document.querySelector("#k23_03").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k23_03","Índice de dependencia de mayores (%)");
 };
+let k24 = document.querySelector("#k24").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k24","Parque de vivienda (viv/1000hab)");
+};
+let k26 = document.querySelector("#k26").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k26","Antigüedad del parque edificatorio. Parque edificatorio anterior al año 2000 (%)");
+};
+let k49_01 = document.querySelector("#k49_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k49_01","Cobertura artificial (%)");
+};
+let k49_02 = document.querySelector("#k49_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k49_02","Cobertura vegetal natural (%)");
+};
+let k49_03 = document.querySelector("#k49_03").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k49_03","Cultivos (%)");
+};
+let k49_04 = document.querySelector("#k49_04").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k49_04","Zonas húmedas y superficies de agua (%)");
+};
+let k56 = document.querySelector("#k56").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k56","Sequías (índice SPI)");
+};
+let k62 = document.querySelector("#k62").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k62","Renta media por hogar (€)");
+};
 
 for (let i = 0; i < iconLink1.length; i++) {
    iconLink1[i].addEventListener("click",(e)=>{
@@ -534,49 +566,49 @@ function action (idIndicator) {
    removeDataChart(dynamicChart);
    switch (idIndicator) {
       case "k01_01":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k01_02":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k01_03":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k01_04":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k02_01":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k02_02":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k03":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k04":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
@@ -606,69 +638,117 @@ function action (idIndicator) {
          actionSetUp(actionPropId);
          break;
       case "k08_02":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k10_01":
-         unit = "zon/hab"
+         unit = "zon/hab";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k10_02":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k12_01":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k20":
          //FIXME: values are higher than 100
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k21_01":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k21_02":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          grades = [0,20,40,60,80];
          break;
       case "k22":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k23_01":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k23_02":
-         unit = "%"
+         unit = "%";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
          break;
       case "k23_03":
-         unit = "%"
+         unit = "%";
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k24":
+         unit = "viv/1000hab";
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k26":
+         unit = "%";
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k49_01":
+         unit = "%";
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k49_02":
+         unit = "%";
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k49_03":
+         unit = "%";
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k49_04":
+         unit = "%";
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k56":
+         unit = "%";
+         actionPropId = "layer.feature.properties." + idIndicator;
+         myData = getData(idIndicator);
+         actionSetUp(actionPropId);
+         break;
+      case "k62":
+         unit = "€";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
@@ -763,11 +843,17 @@ function getData(ind) {
    } else {
       var m = Math.max(...data);
       if (m < 10) {
-         grades = [0,(0.2*m).toFixed(2), (0.4*m).toFixed(2),
-            (0.6*m).toFixed(2), (0.8*m).toFixed(2)];
+         grades = [0,
+                  (0.2*m).toFixed(2),
+                  (0.4*m).toFixed(2),
+                  (0.6*m).toFixed(2),
+                  (0.8*m).toFixed(2)];
       } else {
-         grades = [0, Math.trunc(0.2*m), Math.trunc(0.4*m),
-            Math.trunc(0.6*m), Math.trunc(0.8*m)];
+         grades = [0,
+                  Math.trunc(0.2*m),
+                  Math.trunc(0.4*m),
+                  Math.trunc(0.6*m),
+                  Math.trunc(0.8*m)];
       }
    }
    return data;
