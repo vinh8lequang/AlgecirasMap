@@ -136,5 +136,15 @@
     height: 18px;
     float: left;
     margin-right: 8px;
-    opacity: 0.8;
+    opacity: 0.95;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+    line-height: 0.5;
+    color: #545454;
+
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content h4 {
+    font-size: 12px;
 }

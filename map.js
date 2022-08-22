@@ -194,9 +194,9 @@ function onEachFeature2(feature, layer) {
 
 /*------------------------------ Sidebar ------------------------------*/
 let iconLink1 = document.querySelectorAll(".icon_link1");
-// let arrow1 = document.querySelectorAll(".arrowcat");
+let arrow1 = document.querySelectorAll(".arrowcat");
 let iconLink2 = document.querySelectorAll(".icon_link2");
-// let arrow2 = document.querySelectorAll(".arrowsub");
+let arrow2 = document.querySelectorAll(".arrowsub");
 let sidebar = document.querySelector(".sidebar");
 let menuButton = document.querySelector("#menubtn");
 let dropTables1 = [];
@@ -346,29 +346,34 @@ for (let i = 0; i < iconLink1.length; i++) {
 
 
 
-// for (let i = 0; i < arrow1.length; i++) {
-//     arrow1[i].addEventListener("click",(e)=>{
-//         dropTables1[i] = e.target.parentElement.parentElement;
-//         // console.log("arrow: "+dropTables1[i]);
-//         dropTables1[i].classList.toggle("showmenu1");
-//     })
-// }
+for (let i = 0; i < arrow1.length; i++) {
+    arrow1[i].addEventListener("click",(e)=>{
+        dropTables1[i] = e.target.parentElement.parentElement;
+        // console.log("arrow: "+dropTables1[i]);
+        dropTables1[i].classList.toggle("showmenu1");
+    })
+}
 
 for (let i = 0; i < iconLink2.length; i++) {
    iconLink2[i].addEventListener("click",(e)=>{
-      dropTables2[i] = e.target.parentElement.parentElement.parentElement;
-      // console.log(dropTable);
-      dropTables2[i].classList.toggle("showmenu2");
+      var element = e.target.parentElement.parentElement.parentElement;
+      //this if is to solve the bug when "li" is clicked instead of clicking on "icon_link1"
+      if (element.classList.value === "showmenu2" ||
+         element.classList.value === "") {
+         dropTables2[i] = element;
+         // let dropTable = e.target.parentElement.parentElement.parentElement;
+         dropTables2[i].classList.toggle("showmenu2");
+      }
    })
 }
 
-// for (let i = 0; i < arrow2.length; i++) {
-//     arrow2[i].addEventListener("click",(e)=>{
-//         dropTables2[i] = e.target.parentElement.parentElement;
-//         // console.log(dropTable);
-//         dropTables2[i].classList.toggle("showmenu2");
-//     })
-// }
+for (let i = 0; i < arrow2.length; i++) {
+    arrow2[i].addEventListener("click",(e)=>{
+        dropTables2[i] = e.target.parentElement.parentElement;
+        // console.log(dropTable);
+        dropTables2[i].classList.toggle("showmenu2");
+    })
+}
 
 //on mouse enter and leave, the sidebar expands and collapses
 let sidebarStatic  = false;
@@ -781,7 +786,9 @@ function actionSetUp(prop) {
       layer.closePopup();
       layer.unbindPopup(); //removing previous popups
       var barrioName = layer.feature.properties.barrio;
-      layer.bindPopup("<h4 style=\"text-align:center;\">" + getBarrioNumber(barrioName) + ". " + barrioName + "</h4>" +
+      layer.bindPopup("<h4 style=\"text-align:center;\">" +
+         getBarrioNumber(barrioName) + ". " + barrioName +
+         "</h4>" +
          "<p style=\"text-align:center;\">" + eval(prop) + " " + unit + "</p>");
       layer.setStyle({
          fillColor: getColorNum1(eval(prop)),
