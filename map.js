@@ -2,14 +2,16 @@
 var map = L.map('map', {
    // maxBounds: [
    //     //south west
-   //     [36.036483, -5.556870],
+   //     [36.067050, -5.594750],
    //     //north east
    //     [36.192343, -5.395024]
    // ],
-   maxZoom: 16,
+   maxZoom: 17,
    minZoom: 10,
    // layers: [googleStreets, cities]
 }).setView([36.113,-5.46], 13);
+
+map.setMaxBounds(map.getBounds());
 
 var osmMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
    maxZoom: 19,
@@ -149,13 +151,21 @@ function highlightFeature(e) {
    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
       layer.bringToFront();
    }
-   info.update(layer.feature.properties);
+   try { //remove error messages
+      info.update(layer.feature.properties);
+   } catch (e) {
+      //Do nothing
+   }
 }
 
 function resetHighlight(e) {
    let layer = e.target;
    layer.setStyle(stylelayer.default);
-   info.update();
+   try { //remove error messages
+      info.update();
+   } catch (err) {
+      //Do nothing
+   }
 }
 
 function showSpecDetails(e) {
@@ -614,7 +624,7 @@ function action (idIndicator) {
          actionSetUp(actionPropId);
          break;
       case "k05":
-         unit = "hab/hab";
+         unit = "hab/ha";
          actionPropId = "layer.feature.properties." + idIndicator;
          myData = getData(idIndicator);
          actionSetUp(actionPropId);
@@ -764,13 +774,15 @@ function action (idIndicator) {
 
 //Sets up the color gradient for each indicator. Also resets popups (important)
 function actionSetUp(prop) {
-   myLabels = ["1","2","3","4","5","6","8","9","10","11","12",
+   myLabels = ["1","2","3","4","5","6","7","8","9","10","11","12",
       "13","14","15","16","17","18","19","20","21","22","23","24"];
    actionPopUpsRequired = true;
    geojson.eachLayer(function (layer) {
       layer.closePopup();
       layer.unbindPopup(); //removing previous popups
-      layer.bindPopup("Superficie: " + eval(prop) + " " + unit);
+      var barrioName = layer.feature.properties.barrio;
+      layer.bindPopup("<h4 style=\"text-align:center;\">" + getBarrioNumber(barrioName) + ". " + barrioName + "</h4>" +
+         "<p style=\"text-align:center;\">" + eval(prop) + " " + unit + "</p>");
       layer.setStyle({
          fillColor: getColorNum1(eval(prop)),
          stroke: true,
@@ -870,6 +882,14 @@ var dynamicColors = function() {
 
 for (var i = 0; i<26; i++) {
    colorsChart.push(dynamicColors());
+}
+
+function getBarrioNumber(barrio) {
+   for (var i = 0; i <myLabelsLong.length; i++) {
+      if (myLabelsLong[i] === barrio) {
+         return i + 1;
+      }
+   }
 }
 
 /*-------- Styles of layers --------*/
