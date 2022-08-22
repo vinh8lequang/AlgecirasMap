@@ -228,7 +228,7 @@ let k04 = document.querySelector("#k04").onclick = function() {
 };
 let k05 = document.querySelector("#k05").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k05","Densidad de población en suelo urbano (hab/hab)");
+   barrioSelected.update("k05","Densidad de población en suelo urbano (hab/ha)");
 };
 let k06 = document.querySelector("#k06").onclick = function() {
    actionPopUpsRequired = false;
@@ -841,6 +841,7 @@ function getData(ind) {
    if (unit === "%") {
       grades = [0,20,40,60,80];
    } else {
+      //FIXME there must be a better way...
       var m = Math.max(...data);
       if (m < 10) {
          grades = [0,
@@ -921,7 +922,7 @@ function style2(feature) {
       // color: '#fff',
       weight: 1,
       opacity: 1,
-      fillOpacity: 0.6
+      fillOpacity: 0.7
    };
 }
 
