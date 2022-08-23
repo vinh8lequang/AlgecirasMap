@@ -41,22 +41,27 @@
 }
 
 .sidebar .logo_details #mapbtn {
-    transform: translateX(6px);
-    opacity: 0;
-    transition: all 0.3s ease;
+    height: 60px;
+    transform: translate(26px,6px);
+    opacity: 1;
+    /*transition: all 0.3s ease;*/
 }
 
-.sidebar.active .logo_details #mapbtn {
-    opacity: 1;
-}
+/*.sidebar.active .logo_details #mapbtn {*/
+/*    opacity: 1;*/
+/*}*/
 
 .sidebar .logo_details #menubtn {
     transition: all 0.5s ease;
-    transform: translateX(-202px);
+    /*transform: translateX(-202px);*/
+    transform: translate(-202px,10px);
+    opacity: 0;
 }
 
 .sidebar.active .logo_details #menubtn {
-    transform: translateX(0);
+    /*transform: translateX(0);*/
+    transform: translate(0,10px);
+    opacity: 1;
 }
 
 .sidebar .logo_details #menubtn:hover {
@@ -68,13 +73,15 @@
     color: #3d7685;
     font-weight: 400;
     opacity: 0;
-    transform: translateX(-240%);
+    /*transform: translateX(-240%);*/
+    transform: translate(-240%,10px);
     transition: all 0.5s ease;
 }
 
 .sidebar.active .logo_details .logo_name {
     opacity: 1;
-    transform: translateX(0);
+    /*transform: translateX(0);*/
+    transform: translate(20px,10px);
 }
 
 .sidebar .nav_links {

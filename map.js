@@ -555,7 +555,7 @@ ciudad.onAdd = function (map) {
 
 ciudad.update = function(data,unit) {
    if (data !== undefined) {
-      divCiu.innerHTML = '<h4>Escala ciudad </h4>' + data.toFixed(2) + ' ' + unit;
+      divCiu.innerHTML = '<h4>Escala ciudad </h4>' + '<span class="ciudadvalor">' + data.toFixed(2) + ' ' + unit + '</span>';
    } else {
       divCiu.innerHTML = '<h4>Escala ciudad </h4>';
    }

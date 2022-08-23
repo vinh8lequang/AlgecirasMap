@@ -39,7 +39,8 @@
 }
 
 .charts{
-    bottom: 15px;
+    /*bottom: 15px;*/
+    bottom: 150px;
     /*padding: 6px 8px;*/
     padding-bottom: 18px;
     font: 16px/18px Arial, Helvetica, sans-serif;
@@ -56,8 +57,8 @@
 }
 
 .charts.active {
-    width: 600px;
-    height: 35rem;
+    width: 650px;
+    /*height: 35rem;*/
     /*box-shadow: 0 10px 30px rgba(0,0,0,0.2);*/
 }
 
@@ -83,7 +84,7 @@
 
 .charts.active #chartbtn{
     /*transform: translate(1015%,-120%);*/
-    transform: translate(500px,-25px);
+    transform: translate(550px,-25px);
 }
 
 
@@ -95,11 +96,11 @@
 }
 
 .info h3 {
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .details_scroller{
-	font: 15px/16px Arial, Helvetica, sans-serif;
+	font: 12px/16px Arial, Helvetica, sans-serif;
 	width: 400px;
     /*max-height: 380px;*/
     max-height: 7.5rem;
@@ -119,6 +120,7 @@
 }
 
 .ciudad {
+    bottom: 135px;
     font: 15px/16px Arial, Helvetica, sans-serif;
     width: 400px;
     max-height: 5rem;
@@ -126,9 +128,15 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0);
 }
 
+.ciudad .ciudadvalor {
+    float: right;
+    font-weight: bold;
+}
+
 .legend {
     line-height: 18px;
     color: #555;
+    font-size: 14px;
 }
 
 .legend i {
