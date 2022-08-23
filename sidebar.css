@@ -42,7 +42,7 @@
 
 .sidebar .logo_details #mapbtn {
     height: 60px;
-    transform: translate(26px,6px);
+    transform: translate(26px,7px);
     opacity: 1;
     /*transition: all 0.3s ease;*/
 }

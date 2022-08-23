@@ -134,14 +134,14 @@
 }
 
 .legend {
-    line-height: 18px;
+    line-height: 15px;
     color: #555;
     font-size: 14px;
 }
 
 .legend i {
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
     float: left;
     margin-right: 8px;
     opacity: 0.95;

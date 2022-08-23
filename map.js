@@ -133,6 +133,7 @@ map.on('baselayerchange', function() {
    }, 8000);
 });
 
+/*-------- Loading data --------*/
 var barriosData = {}; //new Object()
 var myLabelsLong = [];
 var longLabelsActive = false;
@@ -142,6 +143,18 @@ function loadData(item){
    myLabelsLong.push(nombreBarrio);
    barriosData[nombreBarrio] = item.properties;
 }
+
+var extraInfo;
+Papa.parse("resources/extrainfo.csv", {
+   download: true,
+   header: true,
+   complete: function(results) {
+      extraInfo = results;
+      console.log(extraInfo);
+   }
+});
+
+
 
 /*-------- Map interaction --------*/
 function highlightFeature(e) {
