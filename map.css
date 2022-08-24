@@ -39,8 +39,8 @@
 }
 
 .charts{
-    /*bottom: 15px;*/
-    bottom: 150px;
+    bottom: 15px;
+    /*bottom: 150px;*/
     /*padding: 6px 8px;*/
     padding-bottom: 18px;
     font: 16px/18px Arial, Helvetica, sans-serif;
@@ -120,7 +120,7 @@
 }
 
 .ciudad {
-    bottom: 135px;
+    /*bottom: 135px;*/
     font: 15px/16px Arial, Helvetica, sans-serif;
     width: 400px;
     max-height: 5rem;

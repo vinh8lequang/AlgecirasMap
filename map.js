@@ -150,7 +150,7 @@ Papa.parse("resources/extrainfo.csv", {
    header: true,
    complete: function(results) {
       extraInfo = results;
-      console.log(extraInfo);
+      console.log(extraInfo.data[0]);
    }
 });
 
