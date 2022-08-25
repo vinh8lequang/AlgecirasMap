@@ -562,7 +562,7 @@ ciudad.onAdd = function (map) {
 
 ciudad.update = function(data,unit) {
    if (data !== undefined) {
-      divCiu.innerHTML = '<h4>Escala ciudad </h4>' + '<span class="ciudadvalor">' + data.toFixed(2) + ' ' + unit + '</span>';
+      divCiu.innerHTML = '<h4>Escala ciudad </h4>' + '<span class="ciudadvalor">' + data.toFixed(4) + ' ' + unit + '</span>';
    } else {
       divCiu.innerHTML = '<h4>Escala ciudad </h4>';
    }
@@ -688,8 +688,8 @@ function action (idIndicator) {
    updateLegendGrades(idIndicator);
    updateBarGrades();
    actionSetUp(actionPropId);
-   const average = myData.reduce((a, b) => a + b, 0) / myData.length;
-   ciudad.update(average,unit);
+   var ciudadValue = Number(eval("extrainfo[0].properties." + idIndicator + ";"));
+   ciudad.update(ciudadValue,unit);
    longLabelsActive ? addDataChart(dynamicChart, myLabelsLong, myData) : addDataChart(dynamicChart, myLabels, myData);
    return getFuentes(idIndicator);
 }
