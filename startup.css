@@ -16,7 +16,8 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -120%);
+    transform: translate(-50%, -80%);
+    width: 600px;
 }
 
 .sidebar.startup .intro_header{
@@ -44,4 +45,10 @@
     color: #232323;
     padding: 20px 0 20px 0;
 
+}
+
+.sidebar.startup .intro_banner {
+    padding: 20px 0 20px 0;
+    display: flex;
+    justify-content: center;
 }
