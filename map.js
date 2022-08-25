@@ -144,17 +144,8 @@ function loadData(item){
    barriosData[nombreBarrio] = item.properties;
 }
 
-var extraInfo;
-Papa.parse("resources/extrainfo.csv", {
-   download: true,
-   header: true,
-   complete: function(results) {
-      extraInfo = results;
-      console.log(extraInfo.data[0]);
-   }
-});
-
-
+extrainfo = extrainfo.features; //just getting the arrays from extrainfo
+console.log(extrainfo);
 
 /*-------- Map interaction --------*/
 function highlightFeature(e) {
@@ -418,7 +409,7 @@ menuButton.onclick = function() {
 var myLabel = "";
 var myLabels = [];
 var myData = [];
-var colorsChart = [];
+// var colorsChart = [];
 graphingChart();
 function graphingChart() {
    var info = L.control({position: 'bottomright'});
@@ -445,7 +436,10 @@ var dynamicChart = new Chart(myChart,{
       labels: myLabels,
       datasets: [{
          // backgroundColor: colorsChart,
-         backgroundColor: '#3d7685',
+         backgroundColor: color => {
+            return updateBarGrades();
+         },
+         // backgroundColor: '#3d7685',
          label: "Dato",
          data: myData,
       }],
@@ -595,195 +589,105 @@ function action (idIndicator) {
    switch (idIndicator) {
       case "k01_01":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k01_02":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k01_03":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k01_04":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k02_01":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k02_02":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k03":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k04":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k05":
          unit = "hab/ha";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k06":
          unit = "viv/hab";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k07":
          unit = "m²t/m²s";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k08_01":
          unit = "m²t/m²s";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k08_02":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k10_01":
          unit = "zon/hab";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k10_02":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k12_01":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k20":
-         //FIXME: values are higher than 100
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k21_01":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k21_02":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
-         grades = [0,20,40,60,80];
          break;
       case "k22":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k23_01":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k23_02":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k23_03":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k24":
          unit = "viv/1000hab";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k26":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k49_01":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k49_02":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k49_03":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k49_04":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k56":
          unit = "%";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       case "k62":
          unit = "€";
-         actionPropId = "layer.feature.properties." + idIndicator;
-         myData = getData(idIndicator);
-         actionSetUp(actionPropId);
          break;
       default:
          return "Selecciona un indicador en la tabla de la izquierda";
    }
+   actionPropId = "layer.feature.properties." + idIndicator;
+   myData = getData(idIndicator);
+   updateLegendGrades(idIndicator);
+   updateBarGrades();
+   actionSetUp(actionPropId);
    const average = myData.reduce((a, b) => a + b, 0) / myData.length;
    ciudad.update(average,unit);
    longLabelsActive ? addDataChart(dynamicChart, myLabelsLong, myData) : addDataChart(dynamicChart, myLabels, myData);
@@ -816,6 +720,33 @@ function actionSetUp(prop) {
    legend.update(1);
 }
 
+function updateLegendGrades(ind) {
+   var grade0 = "extrainfo[3].properties." + ind + ";";
+   var grade1 = "extrainfo[4].properties." + ind + ";";
+   var grade2 = "extrainfo[5].properties." + ind + ";";
+   var grade3 = "extrainfo[6].properties." + ind + ";";
+   var grade4 = "extrainfo[7].properties." + ind + ";";
+   // var grade5 = "extrainfo[8].properties." + ind + ";";
+   var color0 = eval(grade0);
+   var color1 = eval(grade1);
+   var color2 = eval(grade2);
+   var color3 = eval(grade3);
+   var color4 = eval(grade4);
+   // var color5 = eval(grade5);
+   grades = [Number(color0),Number(color1),Number(color2),Number(color3),Number(color4)];
+}
+
+function updateBarGrades() {
+   // for (let i in myData) {
+   //    colorsChart.push(getColorNum1(myData[i]))
+   // }
+   var colors = [];
+   for (let i in myData) {
+      colors.push(getColorNum1(myData[i]))
+   }
+   return colors;
+}
+
 /*-------- Getting/calculating data functions --------*/
 function getLabels0(sects){
    var labels = [];
@@ -846,18 +777,19 @@ function detailedInfo(data,unit) {
 }
 
 function getFuentes(ind) {
-   //hacer bucle con el indicador
-   var str = '<h3>Fuentes</h3>' +
-      'Población: IEACA (2021)' +
-      '<br/>' + 'Superficie ámbito: EELL (2022)' +
-      '<br/>' + 'Superficie ámbito: EELL (2022)' +
-      '<br/>' + 'Superficie ámbito: EELL (2022)' +
-      '<br/>' + 'Superficie ámbito: EELL (2022)' +
-      '<br/>' + 'Superficie ámbito: EELL (2022)' +
-      '<br/>' + 'Superficie ámbito: EELL (2022)' +
-      '<br/>' + 'Superficie ámbito: EELL (2022)' +
-      '<br/>' + 'Superficie ámbito: EELL (2022)';
-   return str;
+   var strcode1 = "extrainfo[1].properties." + ind + ";";
+   var strcode2 = "extrainfo[2].properties." + ind + ";";
+   var fuente1 = eval(strcode1);
+   var fuente2 = eval(strcode2);
+   if (fuente1 === undefined && fuente2 === undefined) {
+      return '<h3>Fuentes</h3>' + "No disponibles";
+   } else if (fuente1 === undefined) {
+      return '<h3>Fuentes</h3>' + fuente2;
+   } else if (fuente2 === undefined){
+      return '<h3>Fuentes</h3>' + fuente1;
+   } else {
+      return '<h3>Fuentes</h3>' + fuente1 + '<br/>' + fuente2;
+   }
 }
 
 function getData(ind) {
@@ -865,45 +797,30 @@ function getData(ind) {
    var data = [];
    var i = 0;
    for (let nombreBarrio in barriosData) {
-      data[i] = eval(strcode);
-      // console.log(strcode);
+      data[i] = Number(eval(strcode));
+      // console.log(data[i]);
       i++;
-   }
-
-   if (unit === "%") {
-      grades = [0,20,40,60,80];
-   } else {
-      //FIXME there must be a better way...
-      var m = Math.max(...data);
-      if (m < 10) {
-         grades = [0,
-                  (0.2*m).toFixed(2),
-                  (0.4*m).toFixed(2),
-                  (0.6*m).toFixed(2),
-                  (0.8*m).toFixed(2)];
-      } else {
-         grades = [0,
-                  Math.trunc(0.2*m),
-                  Math.trunc(0.4*m),
-                  Math.trunc(0.6*m),
-                  Math.trunc(0.8*m)];
-      }
    }
    return data;
 }
 
 /*-------- Aux functions --------*/
-var dynamicColors = function() {
-   var r = Math.floor(Math.random() * 255);
-   var g = Math.floor(Math.random() * 255);
-   var b = Math.floor(Math.random() * 255);
-   return "rgba(" + r + "," + g + "," + b + ",0.8"+ ")";
-};
+// var dynamicColors = function() {
+//    var r = Math.floor(Math.random() * 255);
+//    var g = Math.floor(Math.random() * 255);
+//    var b = Math.floor(Math.random() * 255);
+//    return "rgba(" + r + "," + g + "," + b + ",0.8"+ ")";
+// };
+//
+// for (var i = 0; i<26; i++) {
+//    colorsChart.push(dynamicColors());
+// }
 
-for (var i = 0; i<26; i++) {
-   colorsChart.push(dynamicColors());
-}
-
+/**
+ * Receives barrio name and returns number of barrio, starting from 1.
+ * @param barrio
+ * @returns {number}
+ */
 function getBarrioNumber(barrio) {
    for (var i = 0; i <myLabelsLong.length; i++) {
       if (myLabelsLong[i] === barrio) {
@@ -985,11 +902,11 @@ function getColorLegend(num,value) {
 }
 
 function getColorNum1(value) {
-   return    value >= grades[4]  ? '#964567' :
-             value >= grades[3]  ? '#8C5788' :
-             value >= grades[2]  ? '#607CAC' :
-             value >= grades[1]  ? '#508CAE' :
-               '#5498A9';
+   return value >= grades[4]  ? '#964567' :
+          value >= grades[3]  ? '#8C5788' :
+          value >= grades[2]  ? '#607CAC' :
+          value >= grades[1]  ? '#508CAE' :
+             '#5498A9';
 }
 
 // function getColorNum1(value) {
