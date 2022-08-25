@@ -203,6 +203,7 @@ let iconLink2 = document.querySelectorAll(".icon_link2");
 let arrow2 = document.querySelectorAll(".arrowsub");
 let sidebar = document.querySelector(".sidebar");
 let menuButton = document.querySelector("#menubtn");
+let introButton = document.querySelector("#introbtn");
 let dropTables1 = [];
 let dropTables2 = [];
 let zoomIcon = document.querySelector(".leaflet-left");
@@ -405,6 +406,25 @@ menuButton.onclick = function() {
    sidebarStatic = !sidebarStatic;
 }
 
+introButton.onclick = function() {
+   const elements = document.getElementsByClassName("intro");
+   while(elements.length > 0){
+      elements[0].parentNode.removeChild(elements[0]);
+   }
+   sidebar.classList.toggle("active");
+   closeIntro();
+}
+
+function closeIntro() {
+   setTimeout(function() {
+      sidebar.classList.toggle("startup");
+      zoomIcon.classList.toggle("active");
+      layersIcon.classList.toggle("active");
+      sidebar.classList.toggle("active");
+      sidebar.classList.toggle("active");
+   },100)
+}
+
 /*-------- Charts --------*/
 var myLabel = "";
 var myLabels = [];
@@ -497,6 +517,7 @@ function showLongLabels () {
    }
    longLabelsActive = !longLabelsActive;
 }
+
 /*-------- Information panel --------*/
 var barrioSelected = L.control({position: 'topright'});
 
