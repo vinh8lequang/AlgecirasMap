@@ -95,7 +95,7 @@ function collapseTimeout() {
       layerControl.remove();
       layerControl = L.control.layers(baseMaps, overlayMaps,{position: "topleft", collapsed: true}).addTo(map);
 
-   },3000)
+   },10000)
 }
 
 function removeWithTimeout(layer) {
@@ -134,7 +134,7 @@ map.on('baselayerchange', function() {
 });
 
 /*-------- Loading data --------*/
-var barriosData = {}; //new Object()
+var barriosData = {};
 var myLabelsLong = [];
 var longLabelsActive = false;
 barrios.features.forEach(loadData);
@@ -145,7 +145,6 @@ function loadData(item){
 }
 
 extrainfo = extrainfo.features; //just getting the arrays from extrainfo
-console.log(extrainfo);
 
 /*-------- Map interaction --------*/
 function highlightFeature(e) {
@@ -349,8 +348,6 @@ for (let i = 0; i < iconLink1.length; i++) {
    })
 }
 
-
-
 for (let i = 0; i < arrow1.length; i++) {
     arrow1[i].addEventListener("click",(e)=>{
         dropTables1[i] = e.target.parentElement.parentElement;
@@ -422,7 +419,7 @@ function closeIntro() {
       layersIcon.classList.toggle("active");
       sidebar.classList.toggle("active");
       sidebar.classList.toggle("active");
-   },100)
+   },10)
 }
 
 /*-------- Charts --------*/
@@ -450,7 +447,7 @@ var myChart = document.getElementById('myChart').getContext('2d'); //context 2d 
 // var canvas = document.getElementById('myChart');
 // var parent = document.getElementById('info');
 
-var dynamicChart = new Chart(myChart,{
+const config = {
    type: 'bar', //doughnut,pie,
    data: {
       labels: myLabels,
@@ -470,10 +467,18 @@ var dynamicChart = new Chart(myChart,{
       plugins: {
          legend: {
             display: false,
+         },
+         tooltip: {
+            displayColors: false,
+            // titleColor: '#232323',
+            // bodyColor: '#232323',
+            // backgroundColor: '#3d7685'
          }
       }
    }
-});
+};
+
+var dynamicChart = new Chart(myChart,config);
 
 function addDataChart(chart, label, data) {
    for(let i in label) {
