@@ -22,7 +22,7 @@
 
 .sidebar.startup .intro_header{
     font-weight: 100;
-    font-size: 36px;
+    font-size: 39px;
     color: #232323;
     padding: 20px 0 20px 0;
     display: flex;
@@ -31,14 +31,28 @@
     border-bottom: 1px solid #232323;
 }
 
-.sidebar.startup .intro_header .introbtn {
+.sidebar.startup #introbtn {
+    position: fixed;
     cursor: pointer;
     border: none;
     outline: none;
     background: none;
     font-size: 50px;
-    transform: translateY(-5%);
+    right: 25px;
+    opacity: 1;
 }
+.sidebar #introbtn {
+    opacity: 0;
+}
+
+/*.sidebar.startup .intro_header .introbtn {*/
+/*    cursor: pointer;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    background: none;*/
+/*    font-size: 50px;*/
+/*    transform: translateY(-5%);*/
+/*}*/
 
 .sidebar.startup .intro_body{
     font-weight: 100;

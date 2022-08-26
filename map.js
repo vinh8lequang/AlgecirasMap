@@ -492,18 +492,14 @@ introButton.onclick = function() {
    while(elements.length > 0){
       elements[0].parentNode.removeChild(elements[0]);
    }
-   sidebar.classList.toggle("active");
-   closeIntro();
-}
 
-function closeIntro() {
-   setTimeout(function() {
-      sidebar.classList.toggle("startup");
-      zoomIcon.classList.toggle("active");
-      layersIcon.classList.toggle("active");
-      sidebar.classList.toggle("active");
-      sidebar.classList.toggle("active");
-   },100)
+   sidebar.classList.toggle("active");
+   sidebar.classList.toggle("startup");
+   zoomIcon.classList.toggle("active");
+   layersIcon.classList.toggle("active");
+   sidebar.addEventListener("mouseleave",toggleSidebar,false);
+   sidebar.addEventListener("mouseenter",toggleSidebar,false);
+
 }
 
 /*-------- Banner panel --------*/
