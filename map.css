@@ -147,6 +147,14 @@
     opacity: 0.95;
 }
 
+.banner {
+    /*transform: translateY(5px);*/
+    padding: 3px 8px 0 8px;
+}
+.banner #mapbanner{
+    width: 383px;
+}
+
 .leaflet-popup-content-wrapper .leaflet-popup-content {
     line-height: 0.5;
     color: #545454;

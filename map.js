@@ -260,6 +260,10 @@ let k08_02 = document.querySelector("#k08_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k08_02","Superficie construida uso residencial (%)");
 };
+let k09 = document.querySelector("#k09").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k09","Superficie verde (ha/1000hab)");
+};
 let k10_01 = document.querySelector("#k10_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k10_01","Zonas verdes por habitante");
@@ -268,9 +272,33 @@ let k10_02 = document.querySelector("#k10_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k10_02","Densidad zonas verdes (%)");
 };
+let k10_03 = document.querySelector("#k10_03").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k10_03","Proximidad a zonas verdes y áreas de esparcimiento (%)");
+};
 let k12_01 = document.querySelector("#k12_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k12_01","Longitud calles peatonales (%)");
+};
+let k13_01 = document.querySelector("#k13_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k13_01","Superficie infraestructuras de transporte (ha)");
+};
+let k13_02 = document.querySelector("#k13_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k13_02","Superficie infraestructuras de transporte (%)");
+};
+let k16 = document.querySelector("#k16").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k16","Accesibilidad a los servicios de transporte público (%)");
+};
+let k17 = document.querySelector("#k17").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k17","Dotación de vías ciclistas (km/1000hab)");
+};
+let k18 = document.querySelector("#k18").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k18","Zona de bajas emisiones (ZBE) (%)");
 };
 let k20 = document.querySelector("#k20").onclick = function() {
    actionPopUpsRequired = false;
@@ -324,13 +352,69 @@ let k49_04 = document.querySelector("#k49_04").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k49_04","Zonas húmedas y superficies de agua (%)");
 };
-let k56 = document.querySelector("#k56").onclick = function() {
+let k50 = document.querySelector("#k50").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k56","Sequías (índice SPI)");
+   barrioSelected.update("k50","Longitud y extensión de corredores verdes (ML)");
+};
+let k51 = document.querySelector("#k51").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k51","Presencia de especies y espacios naturales protegidos (%)");
+};
+let k52 = document.querySelector("#k52").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k52","Índice de vegetación (NDVI) (%)");
+};
+let k53 = document.querySelector("#k53").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k53","Red de senderos (ML por barrio) (ML)");
+};
+let k54 = document.querySelector("#k54").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k54","Nitratos en el suelo (%)");
+};
+let k55 = document.querySelector("#k55").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k55","Movimientos de terreno (%)");
+};
+let k57 = document.querySelector("#k57").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k57","Isla de calor urbana (%)");
+};
+let k58 = document.querySelector("#k58").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k58","Inundabilidad urbana (%)");
+};
+let k60_01 = document.querySelector("#k60_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k60_01","Establecimientos en sector agricultura (%)");
+};
+let k60_02 = document.querySelector("#k60_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k60_02","Establecimientos en sector industria (%)");
+};
+let k60_03 = document.querySelector("#k60_03").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k60_03","Establecimientos en sector construcción (%)");
+};
+let k60_04 = document.querySelector("#k60_04").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k60_04","Establecimientos en sector servicios (%)");
 };
 let k62 = document.querySelector("#k62").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k62","Renta media por hogar (€)");
+};
+let k64_01 = document.querySelector("#k64_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k64_01","Zona de patrimonio histórico cultural");
+};
+let k64_02 = document.querySelector("#k64_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k64_02","aaaaa");
+};
+let k70 = document.querySelector("#k70").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k70","Participación en elecciones municipales");
 };
 
 for (let i = 0; i < iconLink1.length; i++) {
@@ -419,8 +503,25 @@ function closeIntro() {
       layersIcon.classList.toggle("active");
       sidebar.classList.toggle("active");
       sidebar.classList.toggle("active");
-   },10)
+   },100)
 }
+
+/*-------- Banner panel --------*/
+var banner = L.control({position: 'bottomright'});
+var divBanner;
+banner.onAdd = function (map) {
+   divBanner = L.DomUtil.create('div', 'info banner');
+   L.DomEvent.disableClickPropagation(divBanner);
+   L.DomEvent.disableScrollPropagation(divBanner);
+   this.update();
+   return divBanner;
+};
+
+banner.update = function() {
+   divBanner.innerHTML = '<img src="resources/images/banner.png" alt="" id="mapbanner">';
+}
+
+banner.addTo(map);
 
 /*-------- Charts --------*/
 var myLabel = "";
@@ -596,7 +697,6 @@ ciudad.update = function(data,unit) {
 
 ciudad.addTo(map);
 
-
 /*-------- Indicator functions --------*/
 
 //this is how you change the chart to line, but not really the correct way
@@ -652,13 +752,34 @@ function action (idIndicator) {
       case "k08_02":
          unit = "%";
          break;
+      case "k09":
+         unit = "ha/1000hab";
+         break;
       case "k10_01":
          unit = "zon/hab";
          break;
       case "k10_02":
          unit = "%";
          break;
+      case "k10_03":
+         unit = "%";
+         break;
       case "k12_01":
+         unit = "%";
+         break;
+      case "k13_01":
+         unit = "ha";
+         break;
+      case "k13_02":
+         unit = "%";
+         break;
+      case "k16":
+         unit = "%";
+         break;
+      case "k17":
+         unit = "km/1000hab";
+         break;
+      case "k18":
          unit = "%";
          break;
       case "k20":
@@ -700,11 +821,53 @@ function action (idIndicator) {
       case "k49_04":
          unit = "%";
          break;
-      case "k56":
+      case "k50":
+         unit = "ML";
+         break;
+      case "k51":
+         unit = "%";
+         break;
+      case "k52":
+         unit = "%";
+         break;
+      case "k53":
+         unit = "ML";
+         break;
+      case "k54":
+         unit = "%";
+         break;
+      case "k55":
+         unit = "%";
+         break;
+      case "k57":
+         unit = "%";
+         break;
+      case "k58":
+         unit = "%";
+         break;
+      case "k60_01":
+         unit = "%";
+         break;
+      case "k60_02":
+         unit = "%";
+         break;
+      case "k60_03":
+         unit = "%";
+         break;
+      case "k60_04":
          unit = "%";
          break;
       case "k62":
          unit = "€";
+         break;
+      case "k64_01":
+         unit = "";
+         break;
+      case "k64_02":
+         unit = "";
+         break;
+      case "k70":
+         unit = "";
          break;
       default:
          return "Selecciona un indicador en la tabla de la izquierda";
@@ -807,11 +970,12 @@ function getFuentes(ind) {
    var strcode2 = "extrainfo[2].properties." + ind + ";";
    var fuente1 = eval(strcode1);
    var fuente2 = eval(strcode2);
-   if (fuente1 === undefined && fuente2 === undefined) {
+   if ((fuente1 === undefined || fuente1 === null) &&
+      (fuente2 === undefined || fuente2 === null)) {
       return '<h3>Fuentes</h3>' + "No disponibles";
-   } else if (fuente1 === undefined) {
+   } else if (fuente1 === undefined || fuente1 === null) {
       return '<h3>Fuentes</h3>' + fuente2;
-   } else if (fuente2 === undefined){
+   } else if (fuente2 === undefined || fuente2 === null){
       return '<h3>Fuentes</h3>' + fuente1;
    } else {
       return '<h3>Fuentes</h3>' + fuente1 + '<br/>' + fuente2;
