@@ -11,7 +11,7 @@ var map = L.map('map', {
    // layers: [googleStreets, cities]
 }).setView([36.113,-5.46], 13);
 
-map.setMaxBounds(map.getBounds());
+// map.setMaxBounds(map.getBounds());
 
 var osmMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
    maxZoom: 19,
@@ -276,6 +276,30 @@ let k10_03 = document.querySelector("#k10_03").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k10_03","Proximidad a zonas verdes y áreas de esparcimiento (%)");
 };
+let k10_04 = document.querySelector("#k10_04").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k10_04","Proximidad simultánea a espacios verdes y áreas de espacimiento (0.1, 3.5, 10 ha)");
+};
+let k11_01 = document.querySelector("#k11_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k11_01","Densidad de vivienda prevista en las áreas de suelo de desarrollo (viv./ha)");
+};
+let k11_02 = document.querySelector("#k11_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k11_02","Áreas de suelo de desarrollo (%)");
+};
+let k11_03 = document.querySelector("#k11_03").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k11_03","Suelo urbanizable delimitado (%)");
+};
+let k11_04 = document.querySelector("#k11_04").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k11_04","Superficie de suelo previsto para uso residencial (%)");
+};
+let k11_05 = document.querySelector("#k11_05").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k11_05","Superficie de suelo previsto para actividades económicas (%)");
+};
 let k12_01 = document.querySelector("#k12_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k12_01","Longitud calles peatonales (%)");
@@ -332,9 +356,77 @@ let k24 = document.querySelector("#k24").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k24","Parque de vivienda (viv/1000hab)");
 };
+let k25 = document.querySelector("#k25").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k25","Tipología de vivienda (%)");
+};
 let k26 = document.querySelector("#k26").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k26","Antigüedad del parque edificatorio. Parque edificatorio anterior al año 2000 (%)");
+};
+let k27 = document.querySelector("#k27").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k27","Superficie de viviendas (m²)");
+};
+let k33 = document.querySelector("#k33").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k33","Accesibilidad a la vivienda");
+};
+let k35_01 = document.querySelector("#k35_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_01","Alimentos y productos diarios: abastecimiento de alimentos básicos (300 m)");
+};
+let k35_02 = document.querySelector("#k35_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_02","Alimentos y productos diarios: mercados municipales (500 m)");
+};
+let k35_03 = document.querySelector("#k35_03").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_03","Centros educativos: centros de educación infantil (300 m)");
+};
+let k35_04 = document.querySelector("#k35_04").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_04","Centros educativos: centros de educación primaria (300 m)");
+};
+let k35_05 = document.querySelector("#k35_05").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_05","Centros educativos: centros de educación secundaria (500 m)");
+};
+let k35_06 = document.querySelector("#k35_06").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_06","Centros sanitarios: centros de salud (300 m)");
+};
+let k35_07 = document.querySelector("#k35_07").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_07","Centros sanitarios: hospitales (1000 m)");
+};
+let k35_08 = document.querySelector("#k35_08").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_08","Centros sociales: centros de servicios sociales comunitarios y centros de día (500 m)");
+};
+let k35_09 = document.querySelector("#k35_09").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_09","Centros deportivos: equipamientos deportivos de uso público (500 m)");
+};
+let k35_10 = document.querySelector("#k35_10").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_10","Centros culturales: bibliotecas públicas, museos y otros centros culturales (500 m)");
+};
+let k35_11 = document.querySelector("#k35_11").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k35_11","Centros de entretenimiento: cines, teatros y otros centros de ocio (500 m)");
+};
+let k42_01 = document.querySelector("#k42_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k42_01","Calidad del silencio DÍA (%) (65 dB)");
+};
+let k42_02 = document.querySelector("#k42_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k42_02","Calidad del silencio NOCHE (%) (55 dB)");
+};
+let k45_02 = document.querySelector("#k45_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k45_02","Proximidad de residuos, por tipología");
 };
 let k49_01 = document.querySelector("#k49_01").onclick = function() {
    actionPopUpsRequired = false;
@@ -376,6 +468,10 @@ let k55 = document.querySelector("#k55").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k55","Movimientos de terreno (%)");
 };
+let k56 = document.querySelector("#k56").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k56","Sin nombre k56");
+};
 let k57 = document.querySelector("#k57").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k57","Isla de calor urbana (%)");
@@ -383,6 +479,10 @@ let k57 = document.querySelector("#k57").onclick = function() {
 let k58 = document.querySelector("#k58").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k58","Inundabilidad urbana (%)");
+};
+let k59 = document.querySelector("#k59").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k59","Complejidad urbana");
 };
 let k60_01 = document.querySelector("#k60_01").onclick = function() {
    actionPopUpsRequired = false;
@@ -406,15 +506,15 @@ let k62 = document.querySelector("#k62").onclick = function() {
 };
 let k64_01 = document.querySelector("#k64_01").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k64_01","Zona de patrimonio histórico cultural");
+   barrioSelected.update("k64_01","Zona de patrimonio histórico cultural (%)");
 };
 let k64_02 = document.querySelector("#k64_02").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k64_02","aaaaa");
+   barrioSelected.update("k64_02","Proximidad a zonas de patrimonio histórico cultural (%)");
 };
 let k70 = document.querySelector("#k70").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k70","Participación en elecciones municipales");
+   barrioSelected.update("k70","Participación en elecciones municipales (%)");
 };
 
 for (let i = 0; i < iconLink1.length; i++) {
@@ -499,7 +599,6 @@ introButton.onclick = function() {
    layersIcon.classList.toggle("active");
    sidebar.addEventListener("mouseleave",toggleSidebar,false);
    sidebar.addEventListener("mouseenter",toggleSidebar,false);
-
 }
 
 /*-------- Banner panel --------*/
@@ -760,6 +859,24 @@ function action (idIndicator) {
       case "k10_03":
          unit = "%";
          break;
+      case "k10_04":
+         unit = "ha";
+         break;
+      case "k11_01":
+         unit = "%";
+         break;
+      case "k11_02":
+         unit = "%";
+         break;
+      case "k11_03":
+         unit = "%";
+         break;
+      case "k11_04":
+         unit = "%";
+         break;
+      case "k11_05":
+         unit = "%";
+         break;
       case "k12_01":
          unit = "%";
          break;
@@ -802,8 +919,59 @@ function action (idIndicator) {
       case "k24":
          unit = "viv/1000hab";
          break;
+      case "k25":
+         unit = "%";
+         break;
       case "k26":
          unit = "%";
+         break;
+      case "k27":
+         unit = "m²";
+         break;
+      case "k33":
+         unit = "";
+         break;
+      case "k35_01":
+         unit = "centros";
+         break;
+      case "k35_02":
+         unit = "centros";
+         break;
+      case "k35_03":
+         unit = "centros";
+         break;
+      case "k35_04":
+         unit = "centros";
+         break;
+      case "k35_05":
+         unit = "centros";
+         break;
+      case "k35_06":
+         unit = "centros";
+         break;
+      case "k35_07":
+         unit = "centros";
+         break;
+      case "k35_08":
+         unit = "centros";
+         break;
+      case "k35_09":
+         unit = "centros";
+         break;
+      case "k35_10":
+         unit = "centros";
+         break;
+      case "k35_11":
+         unit = "centros";
+         break;
+      case "k42_01":
+         unit = "%";
+         break;
+      case "k42_02":
+         unit = "%";
+         break;
+      case "k45_02":
+         unit = "";
          break;
       case "k49_01":
          unit = "%";
@@ -835,11 +1003,17 @@ function action (idIndicator) {
       case "k55":
          unit = "%";
          break;
+      case "k56":
+         unit = "";
+         break;
       case "k57":
          unit = "%";
          break;
       case "k58":
          unit = "%";
+         break;
+      case "k59":
+         unit = "";
          break;
       case "k60_01":
          unit = "%";
@@ -857,13 +1031,13 @@ function action (idIndicator) {
          unit = "€";
          break;
       case "k64_01":
-         unit = "";
+         unit = "%";
          break;
       case "k64_02":
-         unit = "";
+         unit = "%";
          break;
       case "k70":
-         unit = "";
+         unit = "%";
          break;
       default:
          return "Selecciona un indicador en la tabla de la izquierda";
@@ -888,10 +1062,11 @@ function actionSetUp(prop) {
       layer.closePopup();
       layer.unbindPopup(); //removing previous popups
       var barrioName = layer.feature.properties.barrio;
-      layer.bindPopup("<h4 style=\"text-align:center;\">" +
+      var infoText = "<h4 style=\"text-align:center;\">" +
          getBarrioNumber(barrioName) + ". " + barrioName +
          "</h4>" +
-         "<p style=\"text-align:center;\">" + eval(prop) + " " + unit + "</p>");
+         "<p style=\"text-align:center;\">" + eval(prop) + " " + unit + "</p>";
+      layer.bindPopup(infoText);
       layer.setStyle({
          fillColor: getColorNum1(eval(prop)),
          stroke: true,
@@ -901,6 +1076,14 @@ function actionSetUp(prop) {
          opacity: 1,
          fillOpacity: 0.7
       });
+      layer.bindTooltip(infoText,
+         {
+            permanent: false,
+            direction:"left",
+            sticky: true,
+            opacity: 0.8
+         }
+      );
    });
    legend.update(1);
 }
