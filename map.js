@@ -54,6 +54,7 @@ var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z=
 
 var layer1 = L.layerGroup().addTo(map);
 var layer2 = L.layerGroup();
+var layer3 = L.layerGroup();
 
 
 var baseMaps = {
@@ -76,9 +77,14 @@ var geojson2 = L.geoJson(mallas, {
    onEachFeature: onEachFeature2
 });
 
+var geojson3 = L.geoJson(ciudad, {
+   style: style3,
+   onEachFeature: onEachFeature3
+});
+
 var overlayMaps = {
    "Barrios": layer1, // an option to show or hide the layer you created from geojson
-   "Mallas": layer2,
+   "Mallas": layer2
 }
 
 // toggle overlays:
@@ -188,6 +194,15 @@ function onEachFeature(feature, layer) {
 
 function onEachFeature2(feature, layer) {
    layer2.addLayer( layer );
+   layer.on({
+      mouseover: highlightFeature,
+      mouseout: resetHighlight,
+      click: showSpecDetails
+   });
+}
+
+function onEachFeature3(feature, layer) {
+   layer3.addLayer( layer );
    layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
@@ -805,8 +820,13 @@ ciudad.addTo(map);
 var actionPopUpsRequired = false;
 var actionPropId = ""; // to differentiate between the different actions. using eval() later to execute
 var unit;
+var isCiudadInd = false;
 function action (idIndicator) {
    removeDataChart(dynamicChart);
+   if (map.hasLayer(layer3)) {
+      map.removeLayer(layer3);
+      map.addLayer(layer1);
+   }
    switch (idIndicator) {
       case "k01_01":
          unit = "%";
@@ -897,6 +917,7 @@ function action (idIndicator) {
          break;
       case "k20":
          unit = "%";
+         isCiudadInd = !isCiudadInd;
          break;
       case "k21_01":
          unit = "%";
@@ -1046,10 +1067,16 @@ function action (idIndicator) {
    myData = getData(idIndicator);
    updateLegendGrades(idIndicator);
    updateBarGrades();
-   actionSetUp(actionPropId);
-   var ciudadValue = Number(eval("extrainfo[0].properties." + idIndicator + ";"));
+   let ciudadValue = Number(eval("extrainfo[0].properties." + idIndicator + ";"));
+   if (isCiudadInd) {
+      actionSetUpCiu(actionPropId);
+      addDataChart(dynamicChart, ["Algeciras"], [ciudadValue]);
+      isCiudadInd = false;
+   } else {
+      actionSetUp(actionPropId);
+      longLabelsActive ? addDataChart(dynamicChart, myLabelsLong, myData) : addDataChart(dynamicChart, myLabels, myData);
+   }
    ciudad.update(ciudadValue,unit);
-   longLabelsActive ? addDataChart(dynamicChart, myLabelsLong, myData) : addDataChart(dynamicChart, myLabels, myData);
    return getFuentes(idIndicator);
 }
 
@@ -1076,8 +1103,7 @@ function actionSetUp(prop) {
          opacity: 1,
          fillOpacity: 0.7
       });
-      layer.bindTooltip(infoText,
-         {
+      layer.bindTooltip(infoText, {
             permanent: false,
             direction:"left",
             sticky: true,
@@ -1086,6 +1112,31 @@ function actionSetUp(prop) {
       );
    });
    legend.update(1);
+}
+
+function actionSetUpCiu(prop) {
+   actionPopUpsRequired = true;
+   if (map.hasLayer(layer1)) {
+      map.removeLayer(layer1);
+   }
+   map.addLayer(layer3);
+   geojson3.eachLayer(function (layer) {
+      layer.closePopup();
+      layer.unbindPopup(); //removing previous popups
+      var infoText = "<h4 style=\"text-align:center;\">" +
+         "Algeciras" +
+         "</h4>" +
+         "<p style=\"text-align:center;\">" + eval(prop) + " " + unit + "</p>";
+      layer.bindPopup(infoText);
+      layer.bindTooltip(infoText, {
+            permanent: false,
+            direction:"left",
+            sticky: true,
+            opacity: 0.8
+         }
+      );
+   });
+   legend.update(0);
 }
 
 function updateLegendGrades(ind) {
@@ -1246,6 +1297,17 @@ function style2(feature) {
       stroke: true,
       color: '#623d85',
       // color: '#fff',
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.7
+   };
+}
+
+function style3(feature) {
+   return {
+      fillColor: '#5498a9',
+      stroke: true,
+      color: '#42899b',
       weight: 1,
       opacity: 1,
       fillOpacity: 0.7
