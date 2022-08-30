@@ -385,7 +385,7 @@ let k27 = document.querySelector("#k27").onclick = function() {
 };
 let k33 = document.querySelector("#k33").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k33","Accesibilidad a la vivienda");
+   barrioSelected.update("k33","Accesibilidad a la vivienda (años)");
 };
 let k35_01 = document.querySelector("#k35_01").onclick = function() {
    actionPopUpsRequired = false;
@@ -441,7 +441,7 @@ let k42_02 = document.querySelector("#k42_02").onclick = function() {
 };
 let k45_02 = document.querySelector("#k45_02").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k45_02","Proximidad de residuos, por tipología");
+   barrioSelected.update("k45_02","Proximidad de residuos, por tipología (%)");
 };
 let k49_01 = document.querySelector("#k49_01").onclick = function() {
    actionPopUpsRequired = false;
@@ -485,7 +485,7 @@ let k55 = document.querySelector("#k55").onclick = function() {
 };
 let k56 = document.querySelector("#k56").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k56","Sin nombre k56");
+   barrioSelected.update("k56","Movimientos de terreno (%)");
 };
 let k57 = document.querySelector("#k57").onclick = function() {
    actionPopUpsRequired = false;
@@ -497,7 +497,7 @@ let k58 = document.querySelector("#k58").onclick = function() {
 };
 let k59 = document.querySelector("#k59").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k59","Complejidad urbana");
+   barrioSelected.update("k59","Complejidad urbana (índice de Shannon)");
 };
 let k60_01 = document.querySelector("#k60_01").onclick = function() {
    actionPopUpsRequired = false;
@@ -950,40 +950,40 @@ function action (idIndicator) {
          unit = "m²";
          break;
       case "k33":
-         unit = "";
+         unit = "años";
          break;
       case "k35_01":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_02":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_03":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_04":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_05":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_06":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_07":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_08":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_09":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_10":
-         unit = "centros";
+         unit = "%";
          break;
       case "k35_11":
-         unit = "centros";
+         unit = "%";
          break;
       case "k42_01":
          unit = "%";
@@ -992,7 +992,7 @@ function action (idIndicator) {
          unit = "%";
          break;
       case "k45_02":
-         unit = "";
+         unit = "%";
          break;
       case "k49_01":
          unit = "%";
@@ -1070,7 +1070,6 @@ function action (idIndicator) {
    let ciudadValue = Number(eval("extrainfo[0].properties." + idIndicator + ";"));
    if (isCiudadInd) {
       actionSetUpCiu(actionPropId);
-      addDataChart(dynamicChart, ["Algeciras"], [ciudadValue]);
       isCiudadInd = false;
    } else {
       actionSetUp(actionPropId);
