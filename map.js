@@ -452,10 +452,10 @@ let k42_01 = document.querySelector("#k42_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k42_01","Calidad del silencio DÍA (%) (65 dB)");
 };
-let k42_02 = document.querySelector("#k42_02").onclick = function() {
-   actionPopUpsRequired = false;
-   barrioSelected.update("k42_02","Calidad del silencio NOCHE (%) (55 dB)");
-};
+// let k42_02 = document.querySelector("#k42_02").onclick = function() {
+//    actionPopUpsRequired = false;
+//    barrioSelected.update("k42_02","Calidad del silencio NOCHE (%) (55 dB)");
+// };
 let k45_02 = document.querySelector("#k45_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k45_02","Proximidad de residuos, por tipología (%)");
@@ -500,10 +500,10 @@ let k55 = document.querySelector("#k55").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k55","Movimientos de terreno (%)");
 };
-let k56 = document.querySelector("#k56").onclick = function() {
-   actionPopUpsRequired = false;
-   barrioSelected.update("k56","Movimientos de terreno (%)");
-};
+// let k56 = document.querySelector("#k56").onclick = function() {
+//    actionPopUpsRequired = false;
+//    barrioSelected.update("k56","Movimientos de terreno (%)");
+// };
 let k57 = document.querySelector("#k57").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k57","Isla de calor urbana (%)");
@@ -1018,9 +1018,9 @@ function action (idIndicator) {
       case "k42_01":
          unit = "%";
          break;
-      case "k42_02":
-         unit = "%";
-         break;
+      // case "k42_02":
+      //    unit = "%";
+      //    break;
       case "k45_02":
          unit = "%";
          break;
@@ -1054,9 +1054,9 @@ function action (idIndicator) {
       case "k55":
          unit = "%";
          break;
-      case "k56":
-         unit = "";
-         break;
+      // case "k56":
+      //    unit = "";
+      //    break;
       case "k57":
          unit = "%";
          break;
