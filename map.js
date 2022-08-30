@@ -116,16 +116,16 @@ map.on('overlayadd', function(event) {
    //this allows the layercontrol to collapse after getting clicked
    layerControl.remove();
    layerControl = L.control.layers(baseMaps, overlayMaps,{position: "topleft", collapsed: true}).addTo(map);
-   console.log("Clicked on " + event.name)
+   // console.log("Clicked on " + event.name)
    if (event.name === "Mallas") {
       if (map.hasLayer(layer1)) {
-         console.log("remove layer1");
+         // console.log("remove layer1");
          removeWithTimeout(layer1);
       }
    }
    else { //(event.name === "Barrios")
       if (map.hasLayer(layer2)) {
-         console.log("remove layer2");
+         // console.log("remove layer2");
          removeWithTimeout(layer2);
       }
    }
@@ -1389,3 +1389,7 @@ function getColorNum3(value) {
                value > 600   ? '#ccece6' :
                   '#edf8fb';
 }
+
+/*-------- Programmer credits --------*/
+console.log("Programmer and designer: Vinh Le Quang");
+console.log("Email: vinh8lequang@gmail.com");

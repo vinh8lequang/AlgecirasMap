@@ -272,7 +272,41 @@
     color: #fafafa;
 }
 
+.sidebar .profile_content {
+    opacity: 0;
+    transition: all 0.5s ease;
+}
 
+.sidebar.active .profile_content {
+    position: absolute;
+    background: #fafafa;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+}
+
+.sidebar.active .profile_content .profile {
+    position: relative;
+    padding-top: 20px;
+    height: 55px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .profile_content .profile .credits {
+    transform: translateX(-100%);
+    transition: all 0.5s ease;
+}
+.sidebar.active .profile_content .profile .credits {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 80px;
+    font-size: 14px;
+    color: #3d7685;
+    transform: translateX(0);
+}
 
 
 
