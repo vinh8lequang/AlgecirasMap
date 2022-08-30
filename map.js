@@ -151,6 +151,7 @@ function loadData(item){
 }
 
 extrainfo = extrainfo.features; //just getting the arrays from extrainfo
+// console.log(extrainfo[0]);
 
 /*-------- Map interaction --------*/
 function highlightFeature(e) {
@@ -326,6 +327,22 @@ let k13_01 = document.querySelector("#k13_01").onclick = function() {
 let k13_02 = document.querySelector("#k13_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k13_02","Superficie infraestructuras de transporte (%)");
+};
+let k15_01 = document.querySelector("#k15_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k15_01","Densidad de líneas de autobús (km/km²)");
+};
+let k15_02 = document.querySelector("#k15_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k15_02","Oferta de líneas de autobús por habitante (km/mil hab)");
+};
+let k15_05 = document.querySelector("#k15_05").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k15_05","Densidad de redes ferroviarias (km/km²)");
+};
+let k15_06 = document.querySelector("#k15_06").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k15_06","Oferta de redes ferroviarias por habitante (km/millón hab)");
 };
 let k16 = document.querySelector("#k16").onclick = function() {
    actionPopUpsRequired = false;
@@ -884,6 +901,7 @@ function action (idIndicator) {
          break;
       case "k11_01":
          unit = "%";
+         isCiudadInd = !isCiudadInd;
          break;
       case "k11_02":
          unit = "%";
@@ -905,6 +923,18 @@ function action (idIndicator) {
          break;
       case "k13_02":
          unit = "%";
+         break;
+      case "k15_01":
+         unit = "(km/km²)";
+         break;
+      case "k15_02":
+         unit = "(km/mil hab)";
+         break;
+      case "k15_05":
+         unit = "(km/km²)";
+         break;
+      case "k15_06":
+         unit = "(km/millón hab)";
          break;
       case "k16":
          unit = "%";
@@ -1038,15 +1068,19 @@ function action (idIndicator) {
          break;
       case "k60_01":
          unit = "%";
+         isCiudadInd = !isCiudadInd;
          break;
       case "k60_02":
          unit = "%";
+         isCiudadInd = !isCiudadInd;
          break;
       case "k60_03":
          unit = "%";
+         isCiudadInd = !isCiudadInd;
          break;
       case "k60_04":
          unit = "%";
+         isCiudadInd = !isCiudadInd;
          break;
       case "k62":
          unit = "€";
@@ -1069,7 +1103,7 @@ function action (idIndicator) {
    updateBarGrades();
    let ciudadValue = Number(eval("extrainfo[0].properties." + idIndicator + ";"));
    if (isCiudadInd) {
-      actionSetUpCiu(actionPropId);
+      actionSetUpCiu(ciudadValue);
       isCiudadInd = false;
    } else {
       actionSetUp(actionPropId);
@@ -1113,7 +1147,7 @@ function actionSetUp(prop) {
    legend.update(1);
 }
 
-function actionSetUpCiu(prop) {
+function actionSetUpCiu(ciuVal) {
    actionPopUpsRequired = true;
    if (map.hasLayer(layer1)) {
       map.removeLayer(layer1);
@@ -1125,7 +1159,7 @@ function actionSetUpCiu(prop) {
       var infoText = "<h4 style=\"text-align:center;\">" +
          "Algeciras" +
          "</h4>" +
-         "<p style=\"text-align:center;\">" + eval(prop) + " " + unit + "</p>";
+         "<p style=\"text-align:center;\">" + ciuVal.toFixed(4) + " " + unit + "</p>";
       layer.bindPopup(infoText);
       layer.bindTooltip(infoText, {
             permanent: false,

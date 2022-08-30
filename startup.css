@@ -37,8 +37,8 @@
     border: none;
     outline: none;
     background: none;
-    font-size: 50px;
-    right: 25px;
+    font-size: 70px;
+    right: 35px;
     opacity: 1;
 }
 .sidebar #introbtn {
@@ -51,7 +51,7 @@
 /*    outline: none;*/
 /*    background: none;*/
 /*    font-size: 50px;*/
-/*    transform: translateY(-5%);*/
+/*    transform: translateY(-4%);*/
 /*}*/
 
 .sidebar.startup .intro_body{
