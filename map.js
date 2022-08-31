@@ -179,6 +179,8 @@ function resetHighlight(e) {
 }
 
 function showSpecDetails(e) {
+   chart1.classList.toggle("active");
+   showLongLabels();
    var layer = e.target;
    // map.fitBounds(e.target.getBounds());
    barrioSelected.update(layer.feature.properties);
@@ -226,11 +228,11 @@ let layersIcon = document.querySelector(".leaflet-bottom.leaflet-left");
 
 let k01_01 = document.querySelector("#k01_01").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k01_01","Superficie de Cobertura artificial (%)");
+   barrioSelected.update("k01_01","Superficie de cobertura artificial (%)");
 };
 let k01_02 = document.querySelector("#k01_02").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k01_02","Superficie de Cultivos (%)");
+   barrioSelected.update("k01_02","Superficie de cultivos (%)");
 };
 let k01_03 = document.querySelector("#k01_03").onclick = function() {
    actionPopUpsRequired = false;
@@ -282,7 +284,7 @@ let k09 = document.querySelector("#k09").onclick = function() {
 };
 let k10_01 = document.querySelector("#k10_01").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k10_01","Zonas verdes por habitante");
+   barrioSelected.update("k10_01","Zonas verdes por habitante (m²/hab)");
 };
 let k10_02 = document.querySelector("#k10_02").onclick = function() {
    actionPopUpsRequired = false;
@@ -316,6 +318,14 @@ let k11_05 = document.querySelector("#k11_05").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k11_05","Superficie de suelo previsto para actividades económicas (%)");
 };
+let k11_06 = document.querySelector("#k11_06").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k11_06","Viviendas previstas en áreas de desarrollo respecto al parque de vivienda (%)");
+};
+let k11_07 = document.querySelector("#k11_07").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k11_07","Número de viviendas previstas en las áreas de desarrollo (viv/1000hab)");
+};
 let k12_01 = document.querySelector("#k12_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k12_01","Longitud calles peatonales (%)");
@@ -328,13 +338,25 @@ let k13_02 = document.querySelector("#k13_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k13_02","Superficie infraestructuras de transporte (%)");
 };
+let k14_01 = document.querySelector("#k14_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k14_01","Vehículos domiciliados cada 1000 habitantes (veh/1000hab)");
+};
+let k14_02 = document.querySelector("#k14_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k14_02","Porcentaje de turismos (%)");
+};
+let k14_03 = document.querySelector("#k14_03").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k14_03","Porcentaje de motocicletas (%)");
+};
 let k15_01 = document.querySelector("#k15_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k15_01","Densidad de líneas de autobús (km/km²)");
 };
 let k15_02 = document.querySelector("#k15_02").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k15_02","Oferta de líneas de autobús por habitante (km/mil hab)");
+   barrioSelected.update("k15_02","Oferta de líneas de autobús por habitante (km/1000hab)");
 };
 let k15_05 = document.querySelector("#k15_05").onclick = function() {
    actionPopUpsRequired = false;
@@ -400,9 +422,33 @@ let k27 = document.querySelector("#k27").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k27","Superficie de viviendas (m²)");
 };
+let k28 = document.querySelector("#k28").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k28","Vivienda protegida (%)");
+};
+let k29 = document.querySelector("#k29").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k29","Variación del número de hogares 2001-2011 (%)");
+};
+let k30 = document.querySelector("#k30").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k30","Crecimiento del parque de vivienda 2001-2011 (%)");
+};
+let k31 = document.querySelector("#k31").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k31","Vivienda secundaria (%)");
+};
+let k32 = document.querySelector("#k32").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k32","Vivienda vacía (%)");
+};
 let k33 = document.querySelector("#k33").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k33","Accesibilidad a la vivienda (años)");
+};
+let k34 = document.querySelector("#k34").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k34","Porcentaje de personas con acceso a los servicios sociales (%)");
 };
 let k35_01 = document.querySelector("#k35_01").onclick = function() {
    actionPopUpsRequired = false;
@@ -450,7 +496,7 @@ let k35_11 = document.querySelector("#k35_11").onclick = function() {
 };
 let k42_01 = document.querySelector("#k42_01").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k42_01","Calidad del silencio DÍA (%) (65 dB)");
+   barrioSelected.update("k42_01","Calidad del silencio (%) (65 dB)");
 };
 // let k42_02 = document.querySelector("#k42_02").onclick = function() {
 //    actionPopUpsRequired = false;
@@ -490,7 +536,7 @@ let k52 = document.querySelector("#k52").onclick = function() {
 };
 let k53 = document.querySelector("#k53").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k53","Red de senderos (ML por barrio) (ML)");
+   barrioSelected.update("k53","Red de senderos (ML)");
 };
 let k54 = document.querySelector("#k54").onclick = function() {
    actionPopUpsRequired = false;
@@ -543,6 +589,10 @@ let k64_01 = document.querySelector("#k64_01").onclick = function() {
 let k64_02 = document.querySelector("#k64_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k64_02","Proximidad a zonas de patrimonio histórico cultural (%)");
+};
+let k69 = document.querySelector("#k69").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k69","Equidad municipal de género (% mujeres)");
 };
 let k70 = document.querySelector("#k70").onclick = function() {
    actionPopUpsRequired = false;
@@ -888,7 +938,7 @@ function action (idIndicator) {
          unit = "ha/1000hab";
          break;
       case "k10_01":
-         unit = "zon/hab";
+         unit = "m²/hab";
          break;
       case "k10_02":
          unit = "%";
@@ -915,6 +965,14 @@ function action (idIndicator) {
       case "k11_05":
          unit = "%";
          break;
+      case "k11_06":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k11_07":
+         unit = "viv/1000hab";
+         isCiudadInd = !isCiudadInd;
+         break;
       case "k12_01":
          unit = "%";
          break;
@@ -924,17 +982,29 @@ function action (idIndicator) {
       case "k13_02":
          unit = "%";
          break;
+      case "k14_01":
+         unit = "veh/1000hab";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k14_02":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k14_03":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
       case "k15_01":
-         unit = "(km/km²)";
+         unit = "km/km²";
          break;
       case "k15_02":
-         unit = "(km/mil hab)";
+         unit = "km/1000hab";
          break;
       case "k15_05":
-         unit = "(km/km²)";
+         unit = "km/km²";
          break;
       case "k15_06":
-         unit = "(km/millón hab)";
+         unit = "km/millón hab";
          break;
       case "k16":
          unit = "%";
@@ -979,8 +1049,32 @@ function action (idIndicator) {
       case "k27":
          unit = "m²";
          break;
+      case "k28":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k29":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k30":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k31":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k32":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
       case "k33":
          unit = "años";
+         break;
+      case "k34":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
          break;
       case "k35_01":
          unit = "%";
@@ -1091,6 +1185,10 @@ function action (idIndicator) {
       case "k64_02":
          unit = "%";
          break;
+      case "k69":
+         unit = "% mujeres";
+         isCiudadInd = !isCiudadInd;
+         break;
       case "k70":
          unit = "%";
          break;
@@ -1119,14 +1217,14 @@ function actionSetUp(prop) {
       "13","14","15","16","17","18","19","20","21","22","23","24"];
    actionPopUpsRequired = true;
    geojson.eachLayer(function (layer) {
-      layer.closePopup();
-      layer.unbindPopup(); //removing previous popups
+      // layer.closePopup();
+      // layer.unbindPopup(); //removing previous popups
       var barrioName = layer.feature.properties.barrio;
       var infoText = "<h4 style=\"text-align:center;\">" +
          getBarrioNumber(barrioName) + ". " + barrioName +
          "</h4>" +
          "<p style=\"text-align:center;\">" + eval(prop) + " " + unit + "</p>";
-      layer.bindPopup(infoText);
+      // layer.bindPopup(infoText);
       layer.setStyle({
          fillColor: getColorNum1(eval(prop)),
          stroke: true,
@@ -1154,13 +1252,10 @@ function actionSetUpCiu(ciuVal) {
    }
    map.addLayer(layer3);
    geojson3.eachLayer(function (layer) {
-      layer.closePopup();
-      layer.unbindPopup(); //removing previous popups
-      var infoText = "<h4 style=\"text-align:center;\">" +
-         "Algeciras" +
-         "</h4>" +
-         "<p style=\"text-align:center;\">" + ciuVal.toFixed(4) + " " + unit + "</p>";
-      layer.bindPopup(infoText);
+      // layer.closePopup();
+      // layer.unbindPopup(); //removing previous popups
+      var infoText = "<p style=\"text-align:center;\">" + ciuVal.toFixed(4) + " " + unit + "</p>";
+      // layer.bindPopup(infoText);
       layer.bindTooltip(infoText, {
             permanent: false,
             direction:"left",
