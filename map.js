@@ -416,7 +416,7 @@ let k25 = document.querySelector("#k25").onclick = function() {
 };
 let k26 = document.querySelector("#k26").onclick = function() {
    actionPopUpsRequired = false;
-   barrioSelected.update("k26","Antigüedad del parque edificatorio. Parque edificatorio anterior al año 2000 (%)");
+   barrioSelected.update("k26","Antigüedad del parque edificatorio (%)");
 };
 let k27 = document.querySelector("#k27").onclick = function() {
    actionPopUpsRequired = false;
@@ -494,6 +494,18 @@ let k35_11 = document.querySelector("#k35_11").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k35_11","Centros de entretenimiento: cines, teatros y otros centros de ocio (500 m)");
 };
+let k36_01 = document.querySelector("#k36_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k36_01","Porcentaje de parados total (%)");
+};
+let k36_02 = document.querySelector("#k36_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k36_02","Porcentaje de parados entre 25 y 44 años (%)");
+};
+let k36_03 = document.querySelector("#k36_03").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k36_03","Porcentaje de paro femenino (%)");
+};
 let k42_01 = document.querySelector("#k42_01").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k42_01","Calidad del silencio (%) (65 dB)");
@@ -502,6 +514,10 @@ let k42_01 = document.querySelector("#k42_01").onclick = function() {
 //    actionPopUpsRequired = false;
 //    barrioSelected.update("k42_02","Calidad del silencio NOCHE (%) (55 dB)");
 // };
+let k45_01 = document.querySelector("#k45_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k45_01","Generación de residuos por habitante (%)");
+};
 let k45_02 = document.querySelector("#k45_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k45_02","Proximidad de residuos, por tipología (%)");
@@ -577,6 +593,22 @@ let k60_03 = document.querySelector("#k60_03").onclick = function() {
 let k60_04 = document.querySelector("#k60_04").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k60_04","Establecimientos en sector servicios (%)");
+};
+let k61_01 = document.querySelector("#k61_01").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k61_01","Trabajadores en sector agricultura (%)");
+};
+let k61_02 = document.querySelector("#k61_02").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k61_02","Trabajadores en sector industria (%)");
+};
+let k61_03 = document.querySelector("#k61_03").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k61_03","Trabajadores en sector construcción (%)");
+};
+let k61_04 = document.querySelector("#k61_04").onclick = function() {
+   actionPopUpsRequired = false;
+   barrioSelected.update("k61_04","Trabajadores en sector servicios (%)");
 };
 let k62 = document.querySelector("#k62").onclick = function() {
    actionPopUpsRequired = false;
@@ -1109,12 +1141,28 @@ function action (idIndicator) {
       case "k35_11":
          unit = "%";
          break;
+      case "k36_01":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k36_02":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k36_03":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
       case "k42_01":
          unit = "%";
          break;
       // case "k42_02":
       //    unit = "%";
       //    break;
+      case "k45_01":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
       case "k45_02":
          unit = "%";
          break;
@@ -1173,6 +1221,22 @@ function action (idIndicator) {
          isCiudadInd = !isCiudadInd;
          break;
       case "k60_04":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k61_01":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k61_02":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k61_03":
+         unit = "%";
+         isCiudadInd = !isCiudadInd;
+         break;
+      case "k61_04":
          unit = "%";
          isCiudadInd = !isCiudadInd;
          break;
