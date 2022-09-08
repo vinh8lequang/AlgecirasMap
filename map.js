@@ -514,10 +514,10 @@ let k42_01 = document.querySelector("#k42_01").onclick = function() {
 //    actionPopUpsRequired = false;
 //    barrioSelected.update("k42_02","Calidad del silencio NOCHE (%) (55 dB)");
 // };
-let k45_01 = document.querySelector("#k45_01").onclick = function() {
-   actionPopUpsRequired = false;
-   barrioSelected.update("k45_01","Generación de residuos por habitante (%)");
-};
+// let k45_01 = document.querySelector("#k45_01").onclick = function() {
+//    actionPopUpsRequired = false;
+//    barrioSelected.update("k45_01","Generación de residuos por habitante (%)");
+// };
 let k45_02 = document.querySelector("#k45_02").onclick = function() {
    actionPopUpsRequired = false;
    barrioSelected.update("k45_02","Proximidad de residuos, por tipología (%)");
@@ -811,7 +811,8 @@ function removeDataChart(chart) {
          dataset.data.pop();
       }
    });
-   chart.update();
+   chart.options.scales.x = {};
+      chart.update();
 }
 
 let chartButton = document.querySelector("#chartbtn");
@@ -932,18 +933,26 @@ function action (idIndicator) {
          break;
       case "k01_02":
          unit = "%";
+         dynamicChart.options.scales.x = {
+            max: 25
+         }
          break;
       case "k01_03":
          unit = "%";
+         dynamicChart.options.scales.x = {
+            max: 25
+         }
          break;
       case "k01_04":
          unit = "%";
          break;
       case "k02_01":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 4}
          break;
       case "k02_02":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 4}
          break;
       case "k03":
          unit = "%";
@@ -1065,9 +1074,11 @@ function action (idIndicator) {
          break;
       case "k23_02":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 60}
          break;
       case "k23_03":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 60}
          break;
       case "k24":
          unit = "viv/1000hab";
@@ -1110,36 +1121,47 @@ function action (idIndicator) {
          break;
       case "k35_01":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_02":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_03":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_04":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_05":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_06":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_07":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_08":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_09":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_10":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k35_11":
          unit = "%";
+         dynamicChart.options.scales.x = {max: 100}
          break;
       case "k36_01":
          unit = "%";
@@ -1159,10 +1181,10 @@ function action (idIndicator) {
       // case "k42_02":
       //    unit = "%";
       //    break;
-      case "k45_01":
-         unit = "%";
-         isCiudadInd = !isCiudadInd;
-         break;
+      // case "k45_01":
+      //    unit = "%";
+      //    isCiudadInd = !isCiudadInd;
+      //    break;
       case "k45_02":
          unit = "%";
          break;
@@ -1210,19 +1232,15 @@ function action (idIndicator) {
          break;
       case "k60_01":
          unit = "%";
-         isCiudadInd = !isCiudadInd;
          break;
       case "k60_02":
          unit = "%";
-         isCiudadInd = !isCiudadInd;
          break;
       case "k60_03":
          unit = "%";
-         isCiudadInd = !isCiudadInd;
          break;
       case "k60_04":
          unit = "%";
-         isCiudadInd = !isCiudadInd;
          break;
       case "k61_01":
          unit = "%";
