@@ -859,6 +859,38 @@ barrioSelected.update = function(idIndicator,nameIndicator) {
 
 barrioSelected.addTo(map);
 
+/*-------- Description panel --------*/
+var desc = L.control({position: 'topright'});
+var divDesc;
+var descActive = false;
+desc.onAdd = function (map) {
+   divDesc = L.DomUtil.create('div', 'info desc');
+   L.DomEvent.disableClickPropagation(divDesc);
+   L.DomEvent.disableScrollPropagation(divDesc);
+   this.update();
+   return divDesc;
+};
+
+desc.update = function(data) {
+   if (!descActive) { //show only icon
+      divDesc.innerHTML = '<i class=\'bx bx-info-circle\' id=\'descbtn\'></i>';
+   } else {
+      divDesc.innerHTML = data;
+   }
+}
+
+desc.addTo(map);
+
+let descBtn = document.querySelector("#descbtn");
+let descPanel = document.querySelector(".desc");
+
+descPanel.onclick = function() {
+   descPanel.classList.toggle("active");
+   descActive = !descActive;
+   desc.update("Test test test test test test test test test test test test test test test test test" +
+      "test test test test test test test test test test test test test test test test.")
+}
+
 /*-------- Legend panel --------*/
 var legend = L.control({position: 'bottomleft'});
 var grades = [];

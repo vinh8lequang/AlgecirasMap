@@ -147,6 +147,29 @@
     opacity: 0.95;
 }
 
+.desc {
+    position: absolute;
+    align-items: center;
+    font: 15px/16px Arial, Helvetica, sans-serif;
+    width: 25px;
+    height: 25px;
+    right: 403px;
+}
+
+.desc #descbtn {
+    transform: translate(-3px,-1px);
+}
+
+.desc #descbtn:hover {
+    cursor: pointer;
+}
+
+.desc.active {
+    font-size: 12px;
+    width: 200px;
+    height: 7.5rem;
+}
+
 .banner {
     /*transform: translateY(5px);*/
     padding: 3px 8px 0 8px;
