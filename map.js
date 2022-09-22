@@ -848,7 +848,10 @@ barrioSelected.onAdd = function(map) {
 barrioSelected.update = function(idIndicator,nameIndicator) {
    if (!actionPopUpsRequired) {
       if (nameIndicator !== undefined) {
-         this._div.innerHTML = '<h4>' + nameIndicator + '</h4>' +  (idIndicator ? action(idIndicator)
+         this._div.innerHTML = '<h4>' +
+                              nameIndicator +
+                              '</h4>' +  (idIndicator ? action(idIndicator) +
+                              '<i class=\'bx bx-info-circle\' id=\'descbtn\' onclick="descBtnFunction(true)"></i>'
             : "Selecciona un indicador en la tabla de la izquierda");
       } else {
          this._div.innerHTML = '<h4>Información</h4>' +  (idIndicator ? action(idIndicator)
@@ -872,9 +875,7 @@ desc.onAdd = function (map) {
 };
 
 desc.update = function(data) {
-   if (!descActive) { //show only icon
-      divDesc.innerHTML = '<i class=\'bx bx-info-circle\' id=\'descbtn\'></i>';
-   } else {
+   if (descActive) {
       divDesc.innerHTML = data;
    }
 }
@@ -887,9 +888,24 @@ let descPanel = document.querySelector(".desc");
 descPanel.onclick = function() {
    descPanel.classList.toggle("active");
    descActive = !descActive;
-   desc.update("Test test test test test test test test test test test test test test test test test" +
-      "test test test test test test test test test test test test test test test test.")
 }
+
+var idIndicatorGlobal;
+function descBtnFunction(toggle) {
+   if (toggle) {
+      descPanel.classList.toggle("active");
+      descActive = !descActive;
+   }
+   var data = "";
+   for (let i = 0; i < desc_info.length; i++) {
+      if (desc_info[i].indicadores === idIndicatorGlobal) {
+         data = desc_info[i].descripcion;
+      }
+   }
+   desc.update(data);
+}
+
+// console.log(desc_info[3]);
 
 /*-------- Legend panel --------*/
 var legend = L.control({position: 'bottomleft'});
@@ -954,6 +970,7 @@ var actionPropId = ""; // to differentiate between the different actions. using 
 var unit;
 var isCiudadInd = false;
 function action (idIndicator) {
+   idIndicatorGlobal = idIndicator;
    removeDataChart(dynamicChart);
    if (map.hasLayer(layer3)) {
       map.removeLayer(layer3);
@@ -1322,6 +1339,7 @@ function action (idIndicator) {
       longLabelsActive ? addDataChart(dynamicChart, myLabelsLong, myData) : addDataChart(dynamicChart, myLabels, myData);
    }
    ciudad.update(ciudadValue,unit);
+   descBtnFunction(false);
    return getFuentes(idIndicator);
 }
 
